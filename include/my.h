@@ -10,11 +10,16 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-
+#define READ_SIZE 1
 #ifndef MY_H_
 #define MY_H_
 
 /*MAIN.C*/
 int	main();
+
+/*UTILITY.C*/
+int	my_strlen(char *);
+char	*my_strcat(char *, char *);
+char	*my_strdup(char *);
 
 #endif	/*!_MY_H_*/

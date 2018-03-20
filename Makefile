@@ -5,7 +5,9 @@
 ## gaspacho andalou
 ##
 
-SRC	=	./src/main.c
+SRC	=	./src/main.c			\
+		./src/get_next_line.c		\
+		./src/utility.c
 
 OBJ	=	$(SRC:.c=.o)
 
