@@ -5,12 +5,16 @@
 ** header
 */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 
-int	main(int argc, char **argv);
+#ifndef MY_H_
+#define MY_H_
+
+/*MAIN.C*/
+int	main();
 
 #endif	/*!_MY_H_*/
