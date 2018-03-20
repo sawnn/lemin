@@ -15,6 +15,9 @@
 #define MY_H_
 
 /*MAIN.C*/
-int	main();
+int	main(void);
+
+/*BASE.C*/
+int	my_read(void);
 
 #endif	/*!_MY_H_*/

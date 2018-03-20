@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** lol
+** base.c
 ** File description:
-** gaspacho andalou
+** base du programme
 */
 
 #include "my.h"
 
-int	main(void)
+int	my_read(void)
 {
-	return (my_read());
+	
 }
