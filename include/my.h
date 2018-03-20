@@ -15,7 +15,10 @@
 #define MY_H_
 
 /*MAIN.C*/
-int	main();
+int	main(void);
+
+/*BASE.C*/
+int	my_read(void);
 
 /*UTILITY.C*/
 int	my_strlen(char *);
