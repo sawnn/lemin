@@ -32,8 +32,9 @@ char	**str_to_wordtab(char *str)
 	int	i = 0;
 	int	len = 0;
 	int	j = 0;
+	int	k = my_eolen(str) + sizeof(char *);
 
-	if ((tab = malloc(sizeof(char *) * my_eolen(str) + sizeof(char *))) == NULL)
+	if ((tab = malloc(sizeof(char *) * k)) == NULL)
 		return (NULL);
 	for (idx_tab = 0; idx_tab < my_eolen(str) + 1; idx_tab += 1) {
 		for (; str[i] != '\n' && str[i]; i += 1, len += 1);
