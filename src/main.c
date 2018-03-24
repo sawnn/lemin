@@ -9,5 +9,6 @@
 
 int	main(void)
 {
-	return (my_read());
+	my_printf("toto");
+	return (my_reader());
 }

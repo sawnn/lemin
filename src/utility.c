@@ -46,3 +46,13 @@ char	*my_strdup(char *str)
 	tmp[i] = '\0';
 	return (tmp);
 }
+
+int	my_eolen(char *str)
+{
+	int	idx_len = 0;
+	int	idx_str = 0;
+
+	for (idx_len = 0; str[idx_str]; idx_str += 1)
+		str[idx_str] == 10 ? idx_len += 1 : 0;
+	return (idx_len);
+}

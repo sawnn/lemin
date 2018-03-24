@@ -7,7 +7,8 @@
 
 SRC	=	./src/main.c			\
 		./src/get_next_line.c		\
-		./src/utility.c
+		./src/utility.c			\
+		./src/base.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -24,13 +25,16 @@ $(NAME):	$(OBJ)
 clean:
 	rm -f ./src/*.o
 	rm -f *~
-	rm -f *~
+	rm -f *#
 	rm -f ./lib_printf/include/*~
 	rm -f ./lib_printf/src/*.o
 	rm -f ./lib_printf/src/*~
+	rm -f ./lib_printf/src/*#
 	rm -f vg*
 	rm -f ./src/*~
+	rm -f ./src/*#
 	rm -f ./include/*~
+	rm -f ./include/*#
 
 fclean: clean
 	rm -f $(NAME)
