@@ -35,7 +35,7 @@ char	**str_to_wordtab(char *str)
 
 	if ((tab = malloc(sizeof(char *) * my_eolen(str) + sizeof(char *))) == NULL)
 		return (NULL);
-	for (idx_tab = 0; idx_tab < my_eolen(str) + 1; idx_tab += 1) {		
+	for (idx_tab = 0; idx_tab < my_eolen(str) + 1; idx_tab += 1) {
 		for (; str[i] != '\n' && str[i]; i += 1, len += 1);
 		if ((tab[idx_tab] = malloc(sizeof(char) * len + 1)) == NULL)
 			return (NULL);
@@ -63,6 +63,7 @@ int	my_checker(char **tab)
 	int	i = 0;
 	return (check_numant(tab[1]));
 }
+
 int	check_numant(char *str)
 {
 	int	i = 0;
