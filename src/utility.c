@@ -56,3 +56,22 @@ int	my_eolen(char *str)
 		str[idx_str] == 10 ? idx_len += 1 : 0;
 	return (idx_len);
 }
+
+int	my_getnbr(char	*str)
+{
+	int	nb = 0;
+	int	i = 0;
+	int	neg = 1;
+
+	if (str[0] == '-') {
+		neg = -1;
+		i += 1;
+	}
+	while (str[i]) {
+		nb = nb + str[i] - 48;
+		nb = nb * 10;
+		i += 1;
+	}
+	return ((nb / 10) * neg);
+	
+}

@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-int	my_reader(void)
+int	my_reader(first_end *first)
 {
 	char	*str;
 	char	*dest = "";
@@ -22,7 +22,7 @@ int	my_reader(void)
 	(tab = str_to_wordtab(dest)) == NULL ? returner = 84 : 0;
 	if (returner == 84)
 		return (84);
-	return (my_checker(tab));//emilie(tab));
+	return (my_checker(first, tab));
 }
 
 char	**str_to_wordtab(char *str)
@@ -46,6 +46,7 @@ char	**str_to_wordtab(char *str)
 		i += 1;
 		j += 1;
 	}
+	tab[idx_tab - 1] = NULL;
 	return (tab);
 }
 
@@ -57,19 +58,4 @@ char	*remplitab(char *dest, char *src, int j)
 		dest[idx] = src[j];
 	dest[idx] = 0;
 	return (dest);
-}
-
-int	my_checker(char **tab)
-{
-	int	i = 0;
-	return (check_numant(tab[1]));
-}
-
-int	check_numant(char *str)
-{
-	int	i = 0;
-
-	for (i = 0; str[i]; i += 1) {
-		return (0);
-	}
 }
