@@ -71,6 +71,5 @@ int	my_checker(first_end *first, char **tab)
 			put_links_room(first, tab[i]);
 		i += 1;
 	}
-	print_list(*first);
 	return (0);
 }
