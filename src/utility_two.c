@@ -71,7 +71,7 @@ char	*word_nbr_nb(char *str, int nb)
 	return (word);
 }
 
-int	str_compar(char *str, char *ing)
+int	strcompar(char *str, char *ing)
 {
 	int	i = 0;
 	int	len = my_strlen(ing);

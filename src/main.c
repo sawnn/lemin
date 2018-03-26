@@ -11,6 +11,5 @@ int	main(void)
 {
 	first_end	first;
 
-	my_printf("toto");
 	return (my_reader(&first));
 }

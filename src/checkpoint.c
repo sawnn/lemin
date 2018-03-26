@@ -11,7 +11,7 @@ int	my_checkpoint(first_end *first, char **tab)
 {
 	int	idx_check = 0;
 
-	for (idx_check = 0; idx_check < 8; idx_check += 1)
+	for (idx_check = 0; idx_check < 6; idx_check += 1)
 		if (my_ptab(idx_check, tab) == -1)
 			return (84);
 	return (my_checker(first, tab));
@@ -19,7 +19,7 @@ int	my_checkpoint(first_end *first, char **tab)
 
 int	my_ptab(int i, char **tab)
 {
-	ptab_t	check[8];
+	ptab_t	check[7];
 
 	check[0] = &checknumant;
 	check[1] = &check_starter;
@@ -28,6 +28,6 @@ int	my_ptab(int i, char **tab)
 	check[4] = &check_nonb;
 	check[5] = &check_gline;
 //	check[6] = &check_is_good;
-	check[7] = NULL;
+	check[6] = NULL;
 	return ((*check[i])(tab));
 }

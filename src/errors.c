@@ -23,7 +23,7 @@ int	check_starter(char **tab)
 	int	idx_cop = 0;
 
 	for (idx_tab = 0; tab[idx_tab] != NULL; idx_tab += 1) {
-		if (str_compar(tab[idx_tab], "##start") == 1)
+		if (strcompar(tab[idx_tab], "##start") == 1)
 			idx_cop += 1;
 	}
 	return (idx_cop == 1 ? 0 : -1);
@@ -35,7 +35,7 @@ int	check_ender(char **tab)
 	int	idx_cop = 0;
 
 	for (idx_tab = 0; tab[idx_tab] != NULL; idx_tab += 1) {
-		if (str_compar(tab[idx_tab], "##end") == 1)
+		if (strcompar(tab[idx_tab], "##end") == 1)
 			idx_cop += 1;
 	}
 	return (idx_cop == 1 ? 0 : 1);
@@ -47,8 +47,9 @@ int	check_nonb(char **tab)
 
 	for (i = 0; tab[i]; i += 1) {
 		if (tab[i][0] != '#' && tab[i][1] < '0' && tab[i][1] > '9')
-			return (84);
+			return (-1);
 	}
+	return (0);
 }
 
 int	check_gline(char **tab)
@@ -60,4 +61,5 @@ int	check_gline(char **tab)
 		if (check_line(tab[i]) == -1)
 			return (-1);
 	}
+	return (0);
 }

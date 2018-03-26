@@ -63,7 +63,7 @@ int	check_gline(char **);
 /*ERRORS_TWO.C*/
 int	check_line(char *);
 int	check_twocommand(char **);
-int	str_compar(char *, char *);
+int	strcompar(char *, char *);
 
 /*UTILITY.C*/
 int	my_strlen(char *);
