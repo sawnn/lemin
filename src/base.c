@@ -22,7 +22,7 @@ int	my_reader(first_end *first)
 	(tab = str_to_wordtab(dest)) == NULL ? returner = 84 : 0;
 	if (returner == 84)
 		return (84);
-	return (my_checker(first, tab));
+	return (my_checkpoint(first, tab));
 }
 
 char	**str_to_wordtab(char *str)

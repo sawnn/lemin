@@ -14,6 +14,7 @@
 #ifndef MY_H_
 #define MY_H_
 
+typedef	int	(*ptab_t)(char **); /*prototype tableau de pointeurs sur fonction*/
 /* structure qui comporte les infos des chambres */
 typedef	struct	info_room_s {
 	char	*room_name;
@@ -47,6 +48,22 @@ int	main(void);
 int	my_reader(first_end *); /* lit le ficher, lance le parcing, convertit en tab et envoie le programme a emiloche*/
 char	**str_to_wordtab(char *str); /* convertit une str en tab*/
 char	*remplitab(char *dest, char *src, int j); /* rempli les lignes du tableau */
+
+/* CHECKPOINT.C*/
+int	my_checkpoint(first_end *, char **);
+int	my_ptab(int, char **);
+
+/*ERRORS.C*/
+int	checknumant(char **);
+int	check_starter(char **);
+int	check_ender(char **);
+int	check_nonb(char **);
+int	check_gline(char **);
+
+/*ERRORS_TWO.C*/
+int	check_line(char *);
+int	check_twocommand(char **);
+int	str_compar(char *, char *);
 
 /*UTILITY.C*/
 int	my_strlen(char *);

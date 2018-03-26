@@ -70,3 +70,14 @@ char	*word_nbr_nb(char *str, int nb)
 	} word[a] = 0;
 	return (word);
 }
+
+int	str_compar(char *str, char *ing)
+{
+	int	i = 0;
+	int	len = my_strlen(ing);
+	int	cmp = 0;
+
+	for (i = 0; str[i] && ing[i]; i += 1)
+		cmp += (str[i] == ing[i] ? 1 : 0);
+	return ((len == cmp ? (1) : 0));
+}

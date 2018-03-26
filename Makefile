@@ -9,6 +9,9 @@ SRC	=	./src/main.c			\
 		./src/get_next_line.c		\
 		./src/utility.c			\
 		./src/base.c			\
+		./src/checkpoint.c		\
+		./src/errors.c			\
+		./src/errors_two.c		\
 		./src/linked_list.c		\
 		./src/utility_two.c		\
 		./src/fill_struct_info.c	\
