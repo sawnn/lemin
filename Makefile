@@ -19,7 +19,7 @@ SRC	=	./src/main.c			\
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	lemin
+NAME	=	lem_in
 
 CFLAGS	=	-W -Wall -Wextra -I./include -g3
 
