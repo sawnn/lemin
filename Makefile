@@ -12,6 +12,7 @@ SRC	=	./src/main.c			\
 		./src/checkpoint.c		\
 		./src/errors.c			\
 		./src/errors_two.c		\
+		./src/errors_three.c		\
 		./src/linked_list.c		\
 		./src/utility_two.c		\
 		./src/fill_struct_info.c	\

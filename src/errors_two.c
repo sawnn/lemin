@@ -29,25 +29,44 @@ int	check_twocommand(char **tab)
 		idx_cop += (strcompar(tab[idx_tab], "##")) == 1 ? 1 : 0;
 	return (idx_cop == 2 ? 0 : -1);
 }
-/*
+
 int	check_is_good(char **tab)
 {
 	int	i = 0;
-	int	j = 0;
 
-	for (i = 0; tab[i] != NULL; i += 1) {
-		for (j = 0; tab[i][j]; j += 1) {
-			if (tab[i][j] == '#')
-				tutu;
-			if (tab[i][j] == ' ')
-				toto;
-			if (tab[i][j] == '-')
-				titi;
-		}
-	}
+	for (i = 0; tab[i] != NULL; i += 1)
+		if (line_isgood(tab[i]) == -1)
+			return (-1);
+	return (0);
 }
 
 int	line_isgood(char *str)
 {
-	
-}*/
+	int	i = 0;
+
+	for (i = 0; str[i]; i += 1) {
+		if (str[i] == '#' && str[i + 1] != '#')
+			return (0);
+		if (str[i] == ' ')
+			return (check_spacer(str));
+		if (str[i] == '-')
+			return (check_dasher(str));
+	}
+	return (0);
+}
+
+int	check_spacer(char *str)
+{
+	int	i = 0;
+	int	idx_space = 0;
+
+	for (i = 0; str[i]; i += 1) {
+		if ((str[i] != ' ' && str[i] < '0')
+		|| (str[i] != ' ' && str[i] > '9'))
+			return (-1);
+		idx_space += (str[i] == ' ' ? 1 : 0);
+		if (idx_space > 2)
+			return (-1);
+	}
+	return (0);
+}

@@ -63,7 +63,12 @@ int	check_gline(char **);
 /*ERRORS_TWO.C*/
 int	check_line(char *);
 int	check_twocommand(char **);
-int	strcompar(char *, char *);
+int	check_is_good(char **);
+int	line_isgood(char *);
+int	check_spacer(char *);
+
+/*ERRORS_THREE.C*/
+int	check_dasher(char *);
 
 /*UTILITY.C*/
 int	my_strlen(char *);
@@ -83,6 +88,7 @@ int	my_strncmp(char *, char *, int);
 int	count_space(char *);
 char	*malloc_for_word(int, char *, char *, char); /* malloc pour un mot dans une pharse */
 char	*word_nbr_nb(char *, int); /* return the nb word in a char* */
+int	strcompar(char *, char *);
 
 /* FILL_STRUCT_INFO */
 char	*get_link(char *);

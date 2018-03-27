@@ -11,5 +11,6 @@ int	main(void)
 {
 	first_end	first;
 
-	return (my_reader(&first));
+	if (my_reader(&first) == 84)
+		return (84);
 }
