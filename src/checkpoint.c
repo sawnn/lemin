@@ -13,7 +13,6 @@ int	my_checkpoint(first_end *first, char **tab)
 
 	for (idx_check = 0; idx_check < 7; idx_check += 1) {
 		if (my_ptab(idx_check, tab) == -1) {
-			my_printf("toto\n");
 			return (84);
 		}
 	}
