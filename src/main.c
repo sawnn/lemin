@@ -9,8 +9,10 @@
 
 int	main(void)
 {
-	first_end	first;
+	first_end	*first = NULL;
+	char	**tab = NULL;
 
-	if (my_reader(&first) == 84)
+	if ((tab = my_reader()) == NULL)
 		return (84);
+	my_checker(first, tab);
 }

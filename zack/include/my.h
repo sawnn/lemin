@@ -48,6 +48,7 @@ typedef struct s_list {
 	struct s_list	*next;
 } t_list;
 #define READ_SIZE 1
+
 int	my_printf(char *, ...);
 char	*get_next_line(int);
 

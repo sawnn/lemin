@@ -22,12 +22,12 @@ void	put_in_list(first_end *lc, char *str, int i, int ant)
 	room->room_name = word_nbr_nb(str, 1);
 	room->pos_x = my_getnbr(word_nbr_nb(str, 2));
 	room->pos_y = my_getnbr(word_nbr_nb(str, 3));
-	room->start = '0';
-	room->end = '0';
-	i == 1 ? room->start = '1' : 0;
-	i == 2 ? room->end = '1' : 0;
+	room->start = 0;
+	room->end = 0;
+	i == 1 ? room->start = 1 : 0;
+	i == 2 ? room->end = 1 : 0;
 	room->ant = 0;
-	room->start = '1' ? room->ant = ant : 0;
+	room->start == 1 ? room->ant = ant : 0;
 	room->prev = lc->last;
 	room->next = NULL;
 	if (lc->last)
@@ -47,8 +47,8 @@ void	print_list(first_end lc)
 		my_printf("x = %d\n", room->pos_x);
 		my_printf("y = %d\n", room->pos_y);
 		my_printf("ant = %d\n", room->ant);
-		my_printf("start = %c\n", room->start);
-		my_printf("end = %c\n", room->end);
+		my_printf("start = %d\n", room->start);
+		my_printf("end = %d\n", room->end);
 		room = room->next;
 		my_printf("\n\n");
 	}

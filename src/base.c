@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-int	my_reader(first_end *first)
+char	**my_reader(void)
 {
 	char	*str = "";
 	char	*dest = "";
@@ -21,8 +21,10 @@ int	my_reader(first_end *first)
 	}
 	(tab = str_to_wordtab(dest)) == NULL ? returner = 84 : 0;
 	if (returner == 84)
-		return (84);
-	return (my_checkpoint(first, tab));
+		return (NULL);
+	if ((tab = my_checkpoint(tab)) == NULL)
+		return (NULL);
+	return (tab);
 }
 
 char	**str_to_wordtab(char *str)

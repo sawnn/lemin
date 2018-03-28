@@ -52,11 +52,7 @@ int	my_checker(first_end *first, char **tab)
 	int	a = 0;
 	int	nb_ant = 0;
 
-	if ((first = malloc(sizeof(first_end))) == NULL)
-		return (84);
-	init(first);
-	nb_ant = my_getnbr(tab[i]);
-	while (tab[++i]) {
+        while (tab[++i]) {
 		while (my_strncmp(tab[i], "#", 1) == 0) {
 			my_strncmp(tab[i], "##start", 7) == 0 ?	a = 1 : 0;
 			my_strncmp(tab[i], "##end", 5) == 0 ? a = 2 : 0;

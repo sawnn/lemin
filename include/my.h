@@ -45,12 +45,12 @@ char	*get_next_line(int);
 int	main(void);
 
 /*BASE.C*/
-int	my_reader(first_end *); /* lit le ficher, lance le parcing, convertit en tab et envoie le programme a emiloche*/
+char	**my_reader(void); /* lit le ficher, lance le parcing, convertit en tab et envoie le programme a emiloche*/
 char	**str_to_wordtab(char *str); /* convertit une str en tab*/
 char	*remplitab(char *dest, char *src, int j); /* rempli les lignes du tableau */
 
 /* CHECKPOINT.C*/
-int	my_checkpoint(first_end *, char **);
+char	**my_checkpoint(char **);
 int	my_ptab(int, char **);
 
 /*ERRORS.C*/

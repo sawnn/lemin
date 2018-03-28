@@ -95,19 +95,18 @@ int	main(UNU int ac, UNU char **av)
 	first_end	*list;
 	node_t	*node = NULL;
 	link_t	*link;
-	char **tab = NULL;
-	int	i = -1;
-	info_room *info = NULL;
+	char	**tab = NULL;
 
-	
+	if((list = malloc(sizeof(first_end))) == NULL)
+		return (84);
+	init(list);
 	if ((tab = malloc(sizeof(char *) * 4096)) == NULL)
 		return (0);
 	get_tab(tab);
 	my_checker(list, tab);
-	info = list->first;
-	while (info) {
-		my_printf("lol %s\n", info->links_room);
-		info = info->next;
+	while (list->first) {
+		my_printf("lol %s\n", list->first->links_room);
+		list->first = list->first->next;
 	}
 	//node = list_to_graph(list);
 	//link = build_my_graph();

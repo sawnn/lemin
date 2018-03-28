@@ -7,16 +7,16 @@
 
 #include "my.h"
 
-int	my_checkpoint(first_end *first, char **tab)
+char	**my_checkpoint(char **tab)
 {
 	int	idx_check = 0;
 
 	for (idx_check = 0; idx_check < 7; idx_check += 1) {
 		if (my_ptab(idx_check, tab) == -1) {
-			return (84);
+			return (NULL);
 		}
 	}
-	return (my_checker(first, tab));
+	return (tab);
 }
 
 int	my_ptab(int i, char **tab)
