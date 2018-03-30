@@ -60,7 +60,7 @@ void	put_links_room(first_end *lc, char *str)
 	char	*room = get_room(str);
 	char	*link = get_link(str);
 
-	while (my_strncmp(room, rooms->room_name, my_strlen(rooms->room_name)) == 1)
+	while (my_strcmp(room, rooms->room_name) == 1)
 		rooms = rooms->next;
 	if (!rooms->links_room)
 		rooms->links_room = link;

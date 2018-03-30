@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2018
+1;4804;0c1;4804;0c** EPITECH PROJECT, 2018
 ** utility_two.c
 ** File description:
 ** utility_two
@@ -50,14 +50,13 @@ char	*malloc_for_word(int i, char *arg, char *str, char c)
 char	*word_nbr_nb(char *str, int nb)
 {
 	int	space = 1;
-	int	i = 0;
+	int	i = -1;
 	int	a = 0;
 	char	*word = NULL;
 
-	while (space < nb) {
-		if (str[i] == ' ')
+	while (str[++i] && space < nb) {
+		if (str[i]  == ' ')
 			space += 1;
-		i += 1;
 	}
 	word = malloc_for_word(i, word, str, ' ');
 	while (str[i]) {
@@ -66,18 +65,21 @@ char	*word_nbr_nb(char *str, int nb)
 			return (word);
 		}
 		word[a] = str[i];
-		a += 1;	i += 1;
-	} word[a] = 0;
+		a += 1;
+		i += 1;
+	}
+	word[a] = 0;
 	return (word);
 }
 
-int	strcompar(char *str, char *ing)
+int	my_strcmp(char *str1, char *str2)
 {
-	int	i = 0;
-	int	len = my_strlen(ing);
-	int	cmp = 0;
+	int	i = -1;
 
-	for (i = 0; str[i] && ing[i]; i += 1)
-		cmp += (str[i] == ing[i] ? 1 : 0);
-	return ((len == cmp ? (1) : 0));
+	if (!str1 || !str2 || (my_strlen(str1) != my_strlen(str2)))
+		return (0);
+	while (str1[++i] != '\0')
+		if (str1[i] != str2[i])
+			return (0);
+        return (1);
 }

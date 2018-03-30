@@ -105,7 +105,7 @@ int	main(UNU int ac, UNU char **av)
 	get_tab(tab);
 	my_checker(list, tab);
 	while (list->first) {
-		my_printf("lol %s\n", list->first->links_room);
+		printf("%s = %s\n",list->first->room_name, list->first->links_room);
 		list->first = list->first->next;
 	}
 	//node = list_to_graph(list);
