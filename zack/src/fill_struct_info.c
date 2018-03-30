@@ -52,7 +52,9 @@ int	my_checker(first_end *first, char **tab)
 	int	a = 0;
 	int	nb_ant = 0;
 
-        while (tab[++i]) {
+	init(first);
+	nb_ant = my_getnbr(tab[i]);
+	while (tab[++i]) {
 		while (my_strncmp(tab[i], "#", 1) == 0) {
 			my_strncmp(tab[i], "##start", 7) == 0 ?	a = 1 : 0;
 			my_strncmp(tab[i], "##end", 5) == 0 ? a = 2 : 0;
@@ -61,8 +63,9 @@ int	my_checker(first_end *first, char **tab)
 		if (count_space(tab[i]) == 3) {
 			put_in_list(first, tab[i], a, nb_ant);
 			a = 0;
-		} else
+		}
+		else
 			put_links_room(first, tab[i]);
-	}
+        }
 	return (0);
 }

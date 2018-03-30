@@ -21,7 +21,7 @@ CFLAGS	=	-W -Wall -Wextra -I./include -g3
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	gcc -o $(NAME) $(OBJ) ../lib_printf/libmy.a
+	gcc -o $(NAME) $(OBJ) ./libprintf.a
 
 clean:
 	rm -f ./src/*.o

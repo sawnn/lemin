@@ -37,22 +37,22 @@ void	put_in_list(first_end *lc, char *str, int i, int ant)
 	lc->last = room;
 }
 
-void	print_list(first_end lc)
-{
-	info_room	*room = lc.first;
+/* void	print_list(first_end lc) */
+/* { */
+/* 	info_room	*room = lc.first; */
 
-	while (room) {
-		my_printf("name = %s\n", room->room_name);
-		my_printf("link_room = %s\n", room->links_room);
-		my_printf("x = %d\n", room->pos_x);
-		my_printf("y = %d\n", room->pos_y);
-		my_printf("ant = %d\n", room->ant);
-		my_printf("start = %d\n", room->start);
-		my_printf("end = %d\n", room->end);
-		room = room->next;
-		my_printf("\n\n");
-	}
-}
+/* 	while (room) { */
+/* 		my_printf("name = %s\n", room->room_name); */
+/* 		my_printf("link_room = %s\n", room->links_room); */
+/* 		my_printf("x = %d\n", room->pos_x); */
+/* 		my_printf("y = %d\n", room->pos_y); */
+/* 		my_printf("ant = %d\n", room->ant); */
+/* 		my_printf("start = %d\n", room->start); */
+/* 		my_printf("end = %d\n", room->end); */
+/* 		room = room->next; */
+/* 		my_printf("\n\n"); */
+/* 	} */
+/* } */
 
 void	put_links_room(first_end *lc, char *str)
 {

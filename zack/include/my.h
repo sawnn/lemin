@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/types.h>
-#include <sys/stats.h>
+#include <sys/stat.h>
 #define READ_SIZE 1
 #ifndef MY_H_
 #define MY_H_
@@ -36,14 +36,19 @@ typedef	struct	first_end_s {
 
 typedef struct	room_s {
 	struct	room_s *next;
-	char	*name
+	char	*name;
 }	room_s;
 
 typedef	first_end_t first_end;
 typedef info_room_t info_room;
 
 typedef struct node {
-	int		data;
+	char	*name;
+	int	x;
+	int	y;
+	int	ant;
+	char	start;
+	char	end;
 	struct link	*link;
 } node_t;
 

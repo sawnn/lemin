@@ -7,17 +7,6 @@
 
 #include "my.h"
 
-node_t	*create_node(int data)
-{
-	node_t	*tmp = NULL;
-
-	if ((tmp = malloc(sizeof(node_t))) == NULL)
-		return (NULL);
-	tmp->data = data;
-	tmp->link = NULL;
-	return (tmp);
-}
-
 t_list	*create_list(t_list *list, int nb)
 {
 	t_list	*tmp = NULL;
@@ -34,11 +23,25 @@ void	print_data_of_connected_nodes(node_t *node)
 {
 	link_t	*tmp = node->link;
 
-	printf("%d\n", node->data);
+	printf("%s\n", node->name);
 	while (tmp) {
-		printf("%d\n", tmp->node->data);
-		tmp = tmp->next;;
+		printf("%s\n", tmp->node->name);
+		tmp = tmp->next;
 	}
+	free(tmp);
+}
+
+void	get_tab(char **tab)
+{
+	char	*s = NULL;
+	int	i = 0;
+
+	while ((s = get_next_line(0))) {
+		tab[i] = s;
+		i += 1;
+	}
+	free(s);
+	tab[i] = NULL;
 }
 
 void	connect_nodes(node_t *node1, node_t *node2)
@@ -52,63 +55,126 @@ void	connect_nodes(node_t *node1, node_t *node2)
 	node1->link = new;
 }
 
-node_t	*list_to_graph(t_list *list)
+int	length_list(first_end *list)
 {
-	node_t	*node = NULL;
-        t_list	*tmp = list;
+	info_room	*tmp = list->first;
+	int		i = 0;
 
-	node = create_node(42);
 	while (tmp) {
-		connect_nodes(node, create_node(tmp->nb));
+		i += 1;
 		tmp = tmp->next;
 	}
-        return (node);
+	free(tmp);
+	return (i);
 }
 
-link_t	*build_my_graph(void)
+node_t	*my_graphdup(info_room *list)
 {
-	node_t	*node = NULL;
+	node_t	*tmp = NULL;
 
-	node = create_node(42);
-	connect_nodes(node, create_node(48));
-	connect_nodes(node, create_node(60012));
-	connect_nodes(node->link->node, create_node(30012));
-	printf("node %d\n", node->link->node->link->node->data);
-	return (node->link);
+	if ((tmp = malloc(sizeof(node_t))) == NULL)
+		return (NULL);
+	if (!list)
+		return (NULL);
+	tmp->name = list->room_name;
+	tmp->x = list->pos_x;
+	tmp->y = list->pos_y;
+	tmp->ant = list->ant;
+	tmp->start = list->start;
+	tmp->end = list->end;
+	return (tmp);
 }
 
-void	get_tab(char **tab)
+node_t	**list_to_node(first_end *list)
 {
-	char	*s = NULL;
-	int	i = 0;
+	node_t		**graph = NULL;
+	info_room	*tmp = list->first;
+	int		i = -1;
+	char		*str = NULL;
 
-	while ((s = get_next_line(0))) {
-		tab[i] = s;
-		i += 1;
+	if ((graph = malloc(sizeof(node_t *) * length_list(list) + 1)) == NULL)
+		return (NULL);
+	while (tmp) {
+		graph[++i] = my_graphdup(tmp);
+		tmp = tmp->next;
 	}
-	tab[i] = NULL;
-	free(s);
+	free(tmp);
+	return (graph);
+}
+
+int	sp(char *str, int i)
+{
+	while (str[i] && str[i++] != ' ');
+	return (i);
+}
+
+void	connect_rooms(node_t *node, node_t **graph, char *str, int idx)
+{
+	int	j = -1;
+	int	i = 1;
+	char	*name = NULL;
+
+	if (!str) {
+		printf("NULL\n");
+		free(name);
+		return;
+	}
+	while (i <= count_space(str) + 1) {
+		while (graph[++j]) {
+			if ((name = word_nbr_nb(str, i)) == NULL)
+				return;
+			if (name && my_strcmp(graph[j]->name, name) == 0) {
+				//			printf("connect %s && %s\n", node->name, name);
+				connect_nodes(node, graph[j]);
+				graph[idx] = node;
+			}
+		}
+		free(name);
+		i += 1;
+		j = -1;
+	}
+	//print_data_of_connected_nodes(graph[idx]);
+	printf("end\n");
+}
+
+node_t	*build_my_graph(node_t **all_node, first_end *list)
+{
+	int		i = -1;
+	info_room	*tmp = list->first;
+
+	while (all_node[++i] != NULL) {
+		printf("connecting for %s to %s...\n", all_node[i]->name, tmp->links_room);
+		connect_rooms(all_node[i], all_node, tmp->links_room, i);
+		tmp = tmp->next;
+	}
+	free(tmp);
+	i = -1;
+	while (all_node[++i]) {
+		if (all_node[i]->start == 1)
+			return (all_node[i]);
+	}
+	return (NULL);
 }
 
 int	main(UNU int ac, UNU char **av)
 {
-	first_end	*list;
-	node_t	*node = NULL;
-	link_t	*link;
-	char	**tab = NULL;
+	first_end	*list = NULL;
+	char		**tab = NULL;
+	node_t		**all_node = NULL;
+	node_t		*start = NULL;
+	info_room	*tmp = NULL;
 
-	if((list = malloc(sizeof(first_end))) == NULL)
+	if ((list = malloc(sizeof(first_end))) == NULL)
 		return (84);
-	init(list);
-	if ((tab = malloc(sizeof(char *) * 4096)) == NULL)
+	if ((tab = malloc(sizeof(char *) * 100000)) == NULL)
 		return (0);
 	get_tab(tab);
 	my_checker(list, tab);
-	while (list->first) {
-		printf("%s = %s\n",list->first->room_name, list->first->links_room);
-		list->first = list->first->next;
-	}
-	//node = list_to_graph(list);
-	//link = build_my_graph();
+	all_node = list_to_node(list);
+	start = build_my_graph(all_node, list);
+	//printf("ici %s\n", all_node[1]->link->node->name);
+	free(list);
+	free(all_node);
+	free(tab);
 	return (0);
 }
