@@ -108,6 +108,14 @@ int	sp(char *str, int i)
 	return (i);
 }
 
+int	len_tab(node_t **tab)
+{
+	int	i = -1;
+
+	while (tab[++i]);
+	return (i);
+}
+
 void	connect_rooms(node_t *node, node_t **graph, char *str, int idx)
 {
 	int	j = -1;
@@ -121,12 +129,14 @@ void	connect_rooms(node_t *node, node_t **graph, char *str, int idx)
 	}
 	while (i <= count_space(str) + 1) {
 		while (graph[++j]) {
-			if ((name = word_nbr_nb(str, i)) == NULL)
+			name = word_nbr_nb(str, i);
+			if (!name || name[0] == '\0')
 				return;
 			if (name && my_strcmp(graph[j]->name, name) == 0) {
-				//			printf("connect %s && %s\n", node->name, name);
+				printf("connect %s && %s\n", node->name, name);
 				connect_nodes(node, graph[j]);
 				graph[idx] = node;
+				j = len_tab(graph) - 1;
 			}
 		}
 		free(name);
@@ -172,7 +182,8 @@ int	main(UNU int ac, UNU char **av)
 	my_checker(list, tab);
 	all_node = list_to_node(list);
 	start = build_my_graph(all_node, list);
-	//printf("ici %s\n", all_node[1]->link->node->name);
+	//print_data_of_connected_nodes(start);
+	printf("ici %s\n", start->link->next->node->link->node->link->node->name);
 	free(list);
 	free(all_node);
 	free(tab);
