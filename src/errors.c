@@ -52,11 +52,9 @@ char	*check_room_alone(char **tab, room_s *room)
 		if (count_space(tab[i]) == 1 && my_strncmp(tab[i], "#", 1) == 1) {
 			name = get_room(tab[i]);
 			link = get_link(tab[i]);
-			if ((my_strcmp(tmp->name, name) == 0) ^ (my_strcmp(tmp->name, link) == 0))
-				i += 1;
-			else {
+			if ((my_strcmp(tmp->name, name) == 1) ^ (my_strcmp(tmp->name, link) == 1)) {
 				tmp = tmp->next;
-				i = 0;
+				i = 1;
 			}
 		}
 		if (!tab[i])

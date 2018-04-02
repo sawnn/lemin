@@ -11,7 +11,12 @@ SRC	=	./src/main.c			\
 		./src/utility_two.c		\
 		./src/utility.c			\
 		./src/get_next_line.c		\
-		./src/graph_utils.c
+		./src/graph_utils.c		\
+		./src/print_tab.c		\
+		./src/base.c			\
+		./src/checkpoint.c		\
+		./src/errors.c			\
+		./src/errors_two.c		\
 
 OBJ	=	$(SRC:.c=.o)
 

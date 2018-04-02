@@ -86,10 +86,13 @@ char *check_room_alone(char **, room_s *);
 
 /* ERRORS_TWO.C */
 char	*check_link_same(char **);
-char	*check_room_name(room_s **, char *);
+char	*check_room_name(room_s *);
 room_s	*put_list_room(room_s **, char *);
 char	*check_room(char *);
 char	*check_room_link(char **, room_s *, int);
+
+/* PRINT TAB */
+void	print_tab(char **);
 
 /* FILL_STRUCT_INFO */
 char	*get_link(char *);

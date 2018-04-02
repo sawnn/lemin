@@ -85,9 +85,12 @@ int	main(UNU int ac, UNU char **av)
 		return (84);
 	if ((tab = malloc(sizeof(char *) * 100000)) == NULL)
 		return (0);
+	if (my_reader(&tab) == NULL)
+		return (84);
 	my_checker(list, tab);
 	all_node = list_to_node(list);
 	start = build_my_graph(all_node, list);
+	print_tab(tab);
 	free(list);
 	free(all_node);
 	free(tab);

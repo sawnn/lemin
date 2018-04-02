@@ -9,8 +9,11 @@
 
 char	*check_ant(char *ant)
 {
-	if (my_str_isunum(ant) == 1)
-		return (NULL);
+	int	i = -1;
+
+	while (ant[++i])
+		if (ant[i] < 48 || ant[i] > 57)
+			return (NULL);
 	return (ant);
 }
 
@@ -63,12 +66,11 @@ char	**check_two(char **tab, int ret)
 		count_space(tab[i]) == 3 ? room = put_list_room(&room, tab[i]) : 0;
 	i = 0;
 	check_room_link(tab, room, i) == NULL ? ret = 84 : 0;
-	check_room_name(room) == NULL ? ret = 84 : 0;
-	check_link_same(tab) == NULL ? ret = 84 : 0;
+        check_room_name(room) == NULL ? ret = 84 : 0;
+        check_link_same(tab) == NULL ? ret = 84 : 0;
 	check_room_alone(tab, room) == NULL ? ret = 84 : 0;
 	if (ret == 84)
 		return (NULL);
-	write(1, "oui", 1);
 	return (tab);
 }
 

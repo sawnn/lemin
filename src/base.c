@@ -23,11 +23,11 @@ char	**my_reader(char ***tab)
 		str = my_strdup(tmp);
 	}
 	(*tab = my_str_to_word_tab(dest, '\n')) == NULL ? returner = 84 : 0;
-	if (returner == 84)
+	if (my_checkpoint(*tab) == NULL || returner == 84) {
+		print_tab(*tab);
 		return (NULL);
-	if (my_checkpoint(*tab) == NULL)
-		return (NULL);
-	return (tab);
+	}
+	return (*tab);
 }
 
 char	**my_malloc_line(char **my_tab, char *str, char c)

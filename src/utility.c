@@ -19,13 +19,18 @@ char	*my_strcat(char *s1, char *s2)
 {
 	int	i = -1;
 	int	j = -1;
-	int	k = my_strlen(s1) + my_strlen(s2) + 2;
+	int	k = my_strlen(s2) + 2;
 	char	*tmp = NULL;
 
+	if (s1)
+		k = k + my_strlen(s1);
 	if ((tmp = malloc(sizeof(char) * k)) == NULL)
 		return (NULL);
-	while (s1[++i] != '\0')
-		tmp[i] = s1[i];
+	if (s1)
+		while (s1[++i] != '\0')
+			tmp[i] = s1[i];
+	else
+		i = 0;
 	while (s2[++j] != '\0') {
 		tmp[i] = s2[j];
 		i += 1;
@@ -39,7 +44,9 @@ char	*my_strdup(char *str)
 	int	i = -1;
 	char	*tmp = NULL;
 
-	if ((tmp = malloc(sizeof(char) * my_strlen(str) + 1)) == NULL)
+	if (!str)
+		return (NULL);
+	else if ((tmp = malloc(sizeof(char) * my_strlen(str) + 1)) == NULL)
 		return (NULL);
 	while (str[++i] != '\0')
 		tmp[i] = str[i];
