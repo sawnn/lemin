@@ -7,57 +7,89 @@
 
 #include "my.h"
 
-char	**my_reader(void)
+char	**my_reader(char ***tab)
 {
-	char	*str = "";
-	char	*dest = "";
-	char	**tab;
+	char	*str = NULL;
+	char	*dest = NULL;
+	char	*tmp = NULL;
 	int	returner = 0;
 
-	while ((str = get_next_line(0))) {
-		(str = my_strcat(str, "\n")) == NULL ? returner = 84 : 0;
+	if ((str = my_strdup(get_next_line(0))) == NULL)
+		return (NULL);
+	while (str) {
+		if ((tmp = my_strdup(get_next_line(0))) != NULL)
+			(str = my_strcat(str, "\n")) == NULL ? returner = 84 : 0;
 		(dest = my_strcat(dest, str)) == NULL ? returner = 84 : 0;
-		free(str);
+		str = my_strdup(tmp);
 	}
-	(tab = str_to_wordtab(dest)) == NULL ? returner = 84 : 0;
+	(*tab = my_str_to_word_tab(dest, '\n')) == NULL ? returner = 84 : 0;
 	if (returner == 84)
 		return (NULL);
-	if ((tab = my_checkpoint(tab)) == NULL)
+	if (my_checkpoint(*tab) == NULL)
 		return (NULL);
 	return (tab);
 }
 
-char	**str_to_wordtab(char *str)
+char	**my_malloc_line(char **my_tab, char *str, char c)
 {
-	char	**tab;
-	int	idx_tab = 0;
 	int	i = 0;
-	int	len = 0;
-	int	j = 0;
-	int	k = my_eolen(str) + sizeof(char *);
+	int	nb = 0;
+	int	a = 0;
 
-	if ((tab = malloc(sizeof(char *) * k)) == NULL)
-		return (NULL);
-	for (idx_tab = 0; idx_tab < my_eolen(str) + 1; idx_tab += 1) {
-		for (; str[i] != '\n' && str[i]; i += 1, len += 1);
-		if ((tab[idx_tab] = malloc(sizeof(char) * len + 1)) == NULL)
-			return (NULL);
-		remplitab(tab[idx_tab], str, j);
-		for (; str[j] != '\n' && str[j]; j += 1);
-		len = 0;
+	while (str[i]) {
+		if (str[i] == c) {
+			if ((my_tab[nb] = malloc(sizeof(char) * a + 2)) == NULL)
+				return (NULL);
+			my_tab[nb][a] = 0;
+			a = 0;
+			nb += 1;
+		}
+		a += 1;
 		i += 1;
-		j += 1;
 	}
-	tab[idx_tab - 1] = NULL;
-	return (tab);
+	if ((my_tab[nb] = malloc(sizeof(char) * a + 2)) == NULL)
+		return (NULL);
+	my_tab[nb][a] = 0;
+	return (my_tab);
 }
 
-char	*remplitab(char *dest, char *src, int j)
+char	**my_malloc_tab(char **my_tab, char *str, char c)
 {
-	int	idx = 0;
+	int	i = 0;
+	int	nb = 0;
 
-	for (idx = 0; src[j] != 10 && src[j]; idx += 1, j += 1)
-		dest[idx] = src[j];
-	dest[idx] = 0;
-	return (dest);
+	while (str[i]) {
+		if (str[i] == c)
+			nb += 1;
+		i += 1;
+	}
+	if ((my_tab = malloc(sizeof(char *) * (nb + 2))) == NULL)
+		return (NULL);
+	else if ((my_tab = my_malloc_line(my_tab, str, c)) == NULL)
+		return (NULL);
+	my_tab[nb + 1] = NULL;
+	return (my_tab);
+}
+
+char	**my_str_to_word_tab(char *str, char c)
+{
+	char	**my_tab = NULL;
+	int	i = -1;
+	int	a = 0;
+	int	t = 0;
+
+	my_tab = my_malloc_tab(my_tab, str, c);
+	while (str[++i]) {
+		if (str[i] == c) {
+			my_tab[t][a] = 0;
+			i += 1;
+			t += 1;
+			a = 0;
+		}
+		my_tab[t][a] = str[i];
+		a += 1;
+	}
+	my_tab[t][a] = 0;
+	my_tab[t + 1] = NULL;
+	return (my_tab);
 }

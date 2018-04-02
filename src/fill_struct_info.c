@@ -54,9 +54,7 @@ int	my_checker(first_end *first, char **tab)
 
 	init(first);
 	nb_ant = my_getnbr(tab[i]);
-	i += 1;
-	while (tab[i]) {
-		write(1, "&", 1);
+	while (tab[++i]) {
 		while (my_strncmp(tab[i], "#", 1) == 0) {
 			my_strncmp(tab[i], "##start", 7) == 0 ?	a = 1 : 0;
 			my_strncmp(tab[i], "##end", 5) == 0 ? a = 2 : 0;
@@ -68,8 +66,6 @@ int	my_checker(first_end *first, char **tab)
 		}
 		else
 			put_links_room(first, tab[i]);
-		i += 1;
-	}
-	print_list(*first);
+        }
 	return (0);
 }

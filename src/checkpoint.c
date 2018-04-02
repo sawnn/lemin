@@ -7,29 +7,83 @@
 
 #include "my.h"
 
-char	**my_checkpoint(char **tab)
+char	*check_ant(char *ant)
 {
-	int	idx_check = 0;
+	if (my_str_isunum(ant) == 1)
+		return (NULL);
+	return (ant);
+}
 
-	for (idx_check = 0; idx_check < 7; idx_check += 1) {
-		if (my_ptab(idx_check, tab) == -1) {
-			return (NULL);
+int	comment(char *str, int *s, int *e, int *a)
+{
+	if (str)
+		if (my_strncmp(str, "##", 2) == 0) {
+			my_strncmp(str, "##start", 7) == 0 ? *s += 1 : 0;
+			my_strncmp(str, "##end", 5) == 0 ? *e += 1 : 0;
+			*a = 1;
+			return (1);
+		}
+	return (0);
+}
+
+char	**check_comment(char **tab)
+{
+	int	i = -1;
+	int	s = 0;
+	int	e = 0;
+	int	a = 0;
+
+	while (tab[++i]) {
+		my_strncmp(tab[i], "#", 1) == 0 && my_strncmp(tab[i], "##", 2) == 1
+			? i += 1 : 0;
+		comment(tab[i], &s, &e, &a) == 1 ? i += 1 : 0;
+		if (a == 1 && tab[i]) {
+			my_strncmp(tab[i], "#", 1) == 0 && my_strncmp(tab[i], "##", 2) == 1
+				? i += 1 : 0;
+	        	if (count_space(tab[i]) != 3 || check_room(tab[i]) == NULL)
+				return (NULL);
+			a = 0;
 		}
 	}
+	if (s != 1 || e != 1)
+		return (NULL);
 	return (tab);
 }
 
-int	my_ptab(int i, char **tab)
+char	**check_two(char **tab, int ret)
 {
-	ptab_t	check[8];
+	int	i = -1;
+	room_s	*room = NULL;
 
-	check[0] = &checknumant;
-	check[1] = &check_starter;
-	check[2] = &check_ender;
-	check[3] = &check_twocommand;
-	check[4] = &check_nonb;
-	check[5] = &check_gline;
-	check[6] = &check_is_good;
-	check[7] = NULL;
-	return ((*check[i])(tab));
+	if ((room = malloc(sizeof(room_s))) == NULL)
+		return (NULL);
+	room->name = NULL;
+	room->next = NULL;
+	while (tab[++i])
+		count_space(tab[i]) == 3 ? room = put_list_room(&room, tab[i]) : 0;
+	i = 0;
+	check_room_link(tab, room, i) == NULL ? ret = 84 : 0;
+	check_room_name(room) == NULL ? ret = 84 : 0;
+	check_link_same(tab) == NULL ? ret = 84 : 0;
+	check_room_alone(tab, room) == NULL ? ret = 84 : 0;
+	if (ret == 84)
+		return (NULL);
+	write(1, "oui", 1);
+	return (tab);
+}
+
+char	**my_checkpoint(char **tab)
+{
+	int	i = 1;
+	int	ret = 0;
+
+	if (check_line(tab) == NULL || check_ant(tab[0]) == NULL
+		|| check_comment(tab) == NULL)
+		return (NULL);
+	while (tab[i]) {
+		if (count_space(tab[i]) == 3)
+			check_room(tab[i]) == NULL ? ret = 84 : 0;
+		i += 1;
+	}
+	return (check_two(tab, ret));
 }

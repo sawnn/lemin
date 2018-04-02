@@ -6,43 +6,34 @@
 ##
 
 SRC	=	./src/main.c			\
-		./src/get_next_line.c		\
-		./src/utility.c			\
-		./src/base.c			\
-		./src/checkpoint.c		\
-		./src/errors.c			\
-		./src/errors_two.c		\
-		./src/errors_three.c		\
+		./src/fill_struct_info.c	\
 		./src/linked_list.c		\
 		./src/utility_two.c		\
-		./src/fill_struct_info.c	\
-
+		./src/utility.c			\
+		./src/get_next_line.c		\
+		./src/graph_utils.c
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	lem_in
+NAME	=	lemin
 
 CFLAGS	=	-W -Wall -Wextra -I./include -g3
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	$(MAKE) -C ./lib_printf
-	gcc -o $(NAME) $(OBJ) ./lib_printf/libmy.a
+	gcc -o $(NAME) $(OBJ) ./libprintf.a
 
 clean:
 	rm -f ./src/*.o
 	rm -f *~
-	rm -f *#
+	rm -f *~
 	rm -f ./lib_printf/include/*~
 	rm -f ./lib_printf/src/*.o
 	rm -f ./lib_printf/src/*~
-	rm -f ./lib_printf/src/*#
 	rm -f vg*
 	rm -f ./src/*~
-	rm -f ./src/*#
 	rm -f ./include/*~
-	rm -f ./include/*#
 
 fclean: clean
 	rm -f $(NAME)

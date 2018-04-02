@@ -73,5 +73,4 @@ int	my_getnbr(char	*str)
 		i += 1;
 	}
 	return ((nb / 10) * neg);
-	
 }

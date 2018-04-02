@@ -27,7 +27,7 @@ void	put_in_list(first_end *lc, char *str, int i, int ant)
 	i == 1 ? room->start = 1 : 0;
 	i == 2 ? room->end = 1 : 0;
 	room->ant = 0;
-	room->start = 1 ? room->ant = ant : 0;
+	room->start == 1 ? room->ant = ant : 0;
 	room->prev = lc->last;
 	room->next = NULL;
 	if (lc->last)
@@ -37,22 +37,22 @@ void	put_in_list(first_end *lc, char *str, int i, int ant)
 	lc->last = room;
 }
 
-void	print_list(first_end lc)
-{
-	info_room	*room = lc.first;
+/* void	print_list(first_end lc) */
+/* { */
+/* 	info_room	*room = lc.first; */
 
-	while (room) {
-		my_printf("name = %s\n", room->room_name);
-		my_printf("link_room = %s\n", room->links_room);
-		my_printf("x = %d\n", room->pos_x);
-		my_printf("y = %d\n", room->pos_y);
-		my_printf("ant = %d\n", room->ant);
-		my_printf("start = %d\n", room->start);
-		my_printf("end = %d\n", room->end);
-		room = room->next;
-		my_printf("\n\n");
-	}
-}
+/* 	while (room) { */
+/* 		my_printf("name = %s\n", room->room_name); */
+/* 		my_printf("link_room = %s\n", room->links_room); */
+/* 		my_printf("x = %d\n", room->pos_x); */
+/* 		my_printf("y = %d\n", room->pos_y); */
+/* 		my_printf("ant = %d\n", room->ant); */
+/* 		my_printf("start = %d\n", room->start); */
+/* 		my_printf("end = %d\n", room->end); */
+/* 		room = room->next; */
+/* 		my_printf("\n\n"); */
+/* 	} */
+/* } */
 
 void	put_links_room(first_end *lc, char *str)
 {
@@ -60,7 +60,7 @@ void	put_links_room(first_end *lc, char *str)
 	char	*room = get_room(str);
 	char	*link = get_link(str);
 
-	while (my_strncmp(room, rooms->room_name, my_strlen(rooms->room_name)) == 1)
+	while (my_strcmp(room, rooms->room_name) == 0)
 		rooms = rooms->next;
 	if (!rooms->links_room)
 		rooms->links_room = link;
