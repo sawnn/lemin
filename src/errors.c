@@ -44,7 +44,7 @@ char	*check_line(char **tab)
 			else
 				break;
 		}
-		if (count_space(tab[i]) == 2)
+		if (count_space(tab[i]) == 2 || count_space(tab[i]) > 3)
 			return (NULL);
 		else if (count_space(tab[i]) == 1)
 			if (check_line_two(tab[i], a) == NULL)

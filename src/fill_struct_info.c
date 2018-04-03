@@ -46,7 +46,7 @@ char	*get_room(char *str)
 	return (name);
 }
 
-int	my_checker(first_end *first, char **tab)
+void	my_checker(first_end *first, char **tab)
 {
 	int	i = 0;
 	int	a = 0;
@@ -60,7 +60,7 @@ int	my_checker(first_end *first, char **tab)
 			my_strncmp(tab[i], "##end", 5) == 0 ? a = 2 : 0;
 			i += 1;
 			if (!tab[i])
-				return (0);
+				return;
 		}
 		if (count_space(tab[i]) == 3)
 			put_in_list(first, tab[i], &a, nb_ant);
@@ -70,5 +70,4 @@ int	my_checker(first_end *first, char **tab)
 				put_links_room(first, tab[i]);
 		}
 	}
-	return (0);
 }

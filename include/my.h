@@ -98,7 +98,7 @@ void	print_tab(char **);
 /* FILL_STRUCT_INFO */
 char	*get_link(char *);
 char	*get_room(char *);
-int	my_checker(first_end *, char **);
+void	my_checker(first_end *, char **);
 
 /*LINKED_LIST */
 void	init(first_end *);
