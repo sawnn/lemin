@@ -59,6 +59,8 @@ int	my_checker(first_end *first, char **tab)
 			my_strncmp(tab[i], "##start", 7) == 0 ?	a = 1 : 0;
 			my_strncmp(tab[i], "##end", 5) == 0 ? a = 2 : 0;
 			i += 1;
+			if (!tab[i])
+				return (0);
 		}
 		if (count_space(tab[i]) == 3) {
 			put_in_list(first, tab[i], a, nb_ant);

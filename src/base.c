@@ -7,27 +7,27 @@
 
 #include "my.h"
 
-char	**my_reader(char ***tab)
+char	**my_reader(char **tab)
 {
 	char	*str = NULL;
 	char	*dest = NULL;
 	char	*tmp = NULL;
 	int	returner = 0;
 
-	if ((str = my_strdup(get_next_line(0))) == NULL)
+	if ((str = get_next_line(0)) == NULL)
 		return (NULL);
 	while (str) {
-		if ((tmp = my_strdup(get_next_line(0))) != NULL)
+		if ((tmp = get_next_line(0)) != NULL)
 			(str = my_strcat(str, "\n")) == NULL ? returner = 84 : 0;
 		(dest = my_strcat(dest, str)) == NULL ? returner = 84 : 0;
 		str = my_strdup(tmp);
 	}
-	(*tab = my_str_to_word_tab(dest, '\n')) == NULL ? returner = 84 : 0;
-	if (my_checkpoint(*tab) == NULL || returner == 84) {
-		print_tab(*tab);
+	(tab = my_str_to_word_tab(dest, '\n')) == NULL ? returner = 84 : 0;
+	if (my_checkpoint(tab) == NULL || returner == 84) {
+		print_tab(tab);
 		return (NULL);
 	}
-	return (*tab);
+	return (tab);
 }
 
 char	**my_malloc_line(char **my_tab, char *str, char c)

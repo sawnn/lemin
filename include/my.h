@@ -67,7 +67,7 @@ int	my_printf(char *, ...);
 char	*get_next_line(int);
 
 /* BASE */
-char	**my_reader(char ***);
+char	**my_reader(char **);
 char	**my_str_to_word_tab(char *str, char c);
 char	**my_malloc_line(char **, char *, char c);
 char	**my_malloc_tab(char **, char *, char c);

@@ -16,7 +16,7 @@ SRC	=	./src/main.c			\
 		./src/base.c			\
 		./src/checkpoint.c		\
 		./src/errors.c			\
-		./src/errors_two.c		\
+		./src/errors_two.c
 
 OBJ	=	$(SRC:.c=.o)
 

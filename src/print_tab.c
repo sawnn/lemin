@@ -22,10 +22,16 @@ void	print_tab_two(char **tab, int *i)
 
 void	print_tab(char **tab)
 {
-	int	i = 0;
+	int	i = -1;
 
 	write(1, "#number_of_ants\n", 16);
-	write(1, tab[0], my_strlen(tab[0]));
+	while (tab[++i]) {
+		if (my_strncmp(tab[i], "#", 1) == 0);
+		else {
+			write(1, tab[i], my_strlen(tab[i]));
+			break;
+		}
+	}
 	write(1, "\n#rooms\n", 8);
 	print_tab_two(tab, &i);
 	i -= 1;

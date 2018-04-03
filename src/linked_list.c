@@ -13,17 +13,23 @@ void	init(first_end	*lc)
 	lc->last = NULL;
 }
 
+void	init_list(info_room *room, char *str)
+{
+	room->room_name = word_nbr_nb(str, 1);
+	room->pos_x = my_getnbr(word_nbr_nb(str, 2));
+	room->pos_y = my_getnbr(word_nbr_nb(str, 3));
+	room->start = 0;
+	room->end = 0;
+	room->links_room = NULL;
+}
+
 void	put_in_list(first_end *lc, char *str, int i, int ant)
 {
 	info_room	*room = malloc(sizeof(info_room));
 
 	if (!room)
 		exit(EXIT_FAILURE);
-	room->room_name = word_nbr_nb(str, 1);
-	room->pos_x = my_getnbr(word_nbr_nb(str, 2));
-	room->pos_y = my_getnbr(word_nbr_nb(str, 3));
-	room->start = 0;
-	room->end = 0;
+	init_list(room, str);
 	i == 1 ? room->start = 1 : 0;
 	i == 2 ? room->end = 1 : 0;
 	room->ant = 0;
@@ -57,12 +63,12 @@ void	put_in_list(first_end *lc, char *str, int i, int ant)
 void	put_links_room(first_end *lc, char *str)
 {
 	info_room	*rooms = lc->first;
-	char	*room = get_room(str);
-	char	*link = get_link(str);
+	char		*room = get_room(str);
+	char		*link = get_link(str);
 
 	while (my_strcmp(room, rooms->room_name) == 0)
 		rooms = rooms->next;
-	if (!rooms->links_room)
+	if (rooms->links_room == NULL)
 		rooms->links_room = link;
 	else {
 		rooms->links_room = my_strcat(rooms->links_room, " ");

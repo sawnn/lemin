@@ -47,6 +47,8 @@ char	**check_comment(char **tab)
 				return (NULL);
 			a = 0;
 		}
+		if (!tab[i])
+			break;
 	}
 	if (s != 1 || e != 1)
 		return (NULL);
