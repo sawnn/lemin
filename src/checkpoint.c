@@ -7,14 +7,20 @@
 
 #include "my.h"
 
-char	*check_ant(char *ant)
+char	*check_ant(char **ant)
 {
+	int	a = -1;
 	int	i = -1;
 
-	while (ant[++i])
-		if (ant[i] < 48 || ant[i] > 57)
+	while (ant[++a]) {
+		if (my_strncmp(ant[a], "#", 1) == 0);
+		else
+			break;
+	}
+	while (ant[a][++i])
+		if (ant[a][i] < 48 || ant[a][i] > 57)
 			return (NULL);
-	return (ant);
+	return (ant[a]);
 }
 
 int	comment(char *str, int *s, int *e, int *a)
@@ -68,10 +74,10 @@ char	**check_two(char **tab, int ret)
 		count_space(tab[i]) == 3 ? room = put_list_room(&room, tab[i]) : 0;
 	i = 0;
 	check_room_link(tab, room, i) == NULL ? ret = 84 : 0;
-        check_room_name(room) == NULL ? ret = 84 : 0;
-        check_link_same(tab) == NULL ? ret = 84 : 0;
+	check_room_name(room) == NULL ? ret = 84 : 0;
+	check_link_same(tab) == NULL ? ret = 84 : 0;
 	check_room_alone(tab, room) == NULL ? ret = 84 : 0;
-	if (ret == 84)
+        if (ret == 84)
 		return (NULL);
 	return (tab);
 }
@@ -81,13 +87,13 @@ char	**my_checkpoint(char **tab)
 	int	i = 1;
 	int	ret = 0;
 
-	if (check_line(tab) == NULL || check_ant(tab[0]) == NULL
+	if (check_line(tab) == NULL || check_ant(tab) == NULL
 		|| check_comment(tab) == NULL)
 		return (NULL);
 	while (tab[i]) {
 		if (count_space(tab[i]) == 3)
 			check_room(tab[i]) == NULL ? ret = 84 : 0;
 		i += 1;
-	}
+        }
 	return (check_two(tab, ret));
 }

@@ -5,7 +5,7 @@
 ** fill my struct with the info I have
 */
 
-#include "../include/my.h"
+#include "my.h"
 
 char	*get_link(char *str)
 {
@@ -62,12 +62,13 @@ int	my_checker(first_end *first, char **tab)
 			if (!tab[i])
 				return (0);
 		}
-		if (count_space(tab[i]) == 3) {
-			put_in_list(first, tab[i], a, nb_ant);
-			a = 0;
+		if (count_space(tab[i]) == 3)
+			put_in_list(first, tab[i], &a, nb_ant);
+		else {
+			if (count_space(tab[i]) == 1 && check_nb(tab[i]) != NULL);
+			else
+				put_links_room(first, tab[i]);
 		}
-		else
-			put_links_room(first, tab[i]);
-        }
+	}
 	return (0);
 }

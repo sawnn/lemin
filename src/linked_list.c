@@ -5,7 +5,7 @@
 ** function for link list
 */
 
-#include "../include/my.h"
+#include "my.h"
 
 void	init(first_end	*lc)
 {
@@ -23,15 +23,15 @@ void	init_list(info_room *room, char *str)
 	room->links_room = NULL;
 }
 
-void	put_in_list(first_end *lc, char *str, int i, int ant)
+void	put_in_list(first_end *lc, char *str, int *i, int ant)
 {
 	info_room	*room = malloc(sizeof(info_room));
 
 	if (!room)
 		exit(EXIT_FAILURE);
 	init_list(room, str);
-	i == 1 ? room->start = 1 : 0;
-	i == 2 ? room->end = 1 : 0;
+	*i == 1 ? room->start = 1 : 0;
+	*i == 2 ? room->end = 1 : 0;
 	room->ant = 0;
 	room->start == 1 ? room->ant = ant : 0;
 	room->prev = lc->last;
@@ -41,24 +41,25 @@ void	put_in_list(first_end *lc, char *str, int i, int ant)
 	else
 		lc->first = room;
 	lc->last = room;
+	*i = 0;
 }
 
-/* void	print_list(first_end lc) */
-/* { */
-/* 	info_room	*room = lc.first; */
+void	print_list(first_end lc)
+{
+	info_room	*room = lc.first;
 
-/* 	while (room) { */
-/* 		my_printf("name = %s\n", room->room_name); */
-/* 		my_printf("link_room = %s\n", room->links_room); */
-/* 		my_printf("x = %d\n", room->pos_x); */
-/* 		my_printf("y = %d\n", room->pos_y); */
-/* 		my_printf("ant = %d\n", room->ant); */
-/* 		my_printf("start = %d\n", room->start); */
-/* 		my_printf("end = %d\n", room->end); */
-/* 		room = room->next; */
-/* 		my_printf("\n\n"); */
-/* 	} */
-/* } */
+	while (room) {
+		printf("name = %s\n", room->room_name);
+		printf("link_room = %s\n", room->links_room);
+		printf("x = %d\n", room->pos_x);
+		printf("y = %d\n", room->pos_y);
+		printf("ant = %d\n", room->ant);
+		printf("start = %d\n", room->start);
+		printf("end = %d\n", room->end);
+		room = room->next;
+		printf("\n\n");
+	}
+}
 
 void	put_links_room(first_end *lc, char *str)
 {

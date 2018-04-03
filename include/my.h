@@ -77,12 +77,13 @@ char	**my_checkpoint(char **);
 char	**check_two(char **, int);
 char	**check_comment(char **);
 int	comment(char *, int *, int *, int *);
-char	*check_ant(char *);
+char	*check_ant(char **);
 
 /* ERRORS.C */
-char	*check_line_two(char **, int, int);
+char	*check_nb(char *);
+char	*check_line_two(char *, int);
 char	*check_line(char **);
-char *check_room_alone(char **, room_s *);
+char	*check_room_alone(char **, room_s *);
 
 /* ERRORS_TWO.C */
 char	*check_link_same(char **);
@@ -101,7 +102,7 @@ int	my_checker(first_end *, char **);
 
 /*LINKED_LIST */
 void	init(first_end *);
-void	put_in_list(first_end *, char *, int, int); 
+void	put_in_list(first_end *, char *, int *, int); 
 void	print_list(first_end lc);
 void	put_links_room(first_end *, char *);
 

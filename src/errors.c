@@ -7,22 +7,34 @@
 
 #include "my.h"
 
-char	*check_line_two(char **tab, int a, int i)
+char	*check_nb(char *tab)
 {
-	while (tab[i][a]) {
-		if (tab[i][a] == '-' && tab[i][a + 1] != 0 && a != 0)
+	int	i = 0;
+
+	while (tab[++i])
+		if (tab[i] < 48 || tab[i] > 57)
+			return (NULL);
+	return (tab);
+}
+
+char	*check_line_two(char *tab, int a)
+{
+	while (tab[a]) {
+		if (check_nb(tab) != NULL)
+			return (tab);
+		else if (tab[a] == '-' && tab[a + 1] != 0 && a != 0)
 			break;
-		else if (tab[i][a + 1] == 0 && tab[i][a] != '-')
+		else if (tab[a + 1] == 0 && tab[a] != '-')
 			return (NULL);
 		else
 			a += 1;
 	}
-	return (tab[i]);
+	return (tab);
 }
 
 char	*check_line(char **tab)
 {
-	int	i = 0;
+	int	i = -1;
 	int	a = 0;
 
 	while (tab[++i]) {
@@ -30,13 +42,13 @@ char	*check_line(char **tab)
 			if (tab[i + 1])
 				i += 1;
 			else
-				return (tab[0]);
+				break;
 		}
 		if (count_space(tab[i]) == 2)
 			return (NULL);
 		else if (count_space(tab[i]) == 1)
-			if (check_line_two(tab, a, i) == NULL)
-				return (NULL);;
+			if (check_line_two(tab[i], a) == NULL)
+				return (NULL);
 		a = 0;
 	}
 	return (tab[0]);

@@ -20,7 +20,7 @@ char	**my_reader(char **tab)
 		if ((tmp = get_next_line(0)) != NULL)
 			(str = my_strcat(str, "\n")) == NULL ? returner = 84 : 0;
 		(dest = my_strcat(dest, str)) == NULL ? returner = 84 : 0;
-		str = my_strdup(tmp);
+		str = tmp;
 	}
 	(tab = my_str_to_word_tab(dest, '\n')) == NULL ? returner = 84 : 0;
 	if (my_checkpoint(tab) == NULL || returner == 84) {
