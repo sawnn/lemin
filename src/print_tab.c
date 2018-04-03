@@ -29,7 +29,7 @@ void	print_tab(char **tab)
 	write(1, "\n#rooms\n", 8);
 	print_tab_two(tab, &i);
 	i -= 1;
-	write(1, "#tunnel\n", 8);
+	write(1, "#tunnels\n", 9);
 	while (tab[++i]) {
 		if (my_strncmp(tab[i], "#", 1) == 0);
 		else {
