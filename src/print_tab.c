@@ -22,7 +22,8 @@ char	*is_comment(char *str)
 void	print_tab_two(char **tab, int *i)
 {
 	while (tab[++*i]) {
-		if (my_strncmp(tab[*i], "##", 2) == 0 || count_space(tab[*i]) == 3) {
+		if (my_strncmp(tab[*i], "##", 2) == 0
+			|| count_space(tab[*i]) == 3) {
 			write(1, tab[*i], my_strlen(tab[*i]));
 			write(1, "\n", 1);
 		}
@@ -50,9 +51,7 @@ void	print_tab(char **tab)
 	write(1, "#tunnels\n", 9);
 	while (tab[++i]) {
 		if (my_strncmp(tab[i], "#", 1) == 0);
-		else {
-			write(1, tab[i], my_strlen(tab[i]));
-			write(1, "\n", 1);
-		}
+		else
+			my_printf("%s\n", tab[i]);
 	}
 }

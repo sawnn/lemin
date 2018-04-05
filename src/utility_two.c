@@ -1,11 +1,11 @@
 /*
-1;4804;0c1;4804;0c** EPITECH PROJECT, 2018
+** EPITECH PROJECT, 2018
 ** utility_two.c
 ** File description:
 ** utility_two
 */
 
-#include "../include/my.h"
+#include "my.h"
 
 int	my_strncmp(char	*str1, char *str2, int nb)
 {
@@ -64,9 +64,7 @@ char	*word_nbr_nb(char *str, int nb)
 			word[a] = 0;
 			return (word);
 		}
-		word[a] = str[i];
-		a += 1;
-		i += 1;
+		word[a++] = str[i++];
 	}
 	word[a] = 0;
 	return (word);
@@ -81,5 +79,5 @@ int	my_strcmp(char *str1, char *str2)
 	while (str1[++i] != '\0')
 		if (str1[i] != str2[i])
 			return (0);
-        return (1);
+	return (1);
 }

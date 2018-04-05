@@ -18,7 +18,12 @@ SRC	=	./src/main.c			\
 		./src/errors.c			\
 		./src/find_path.c		\
 		./src/my_put_nbr.c		\
-		./src/errors_two.c
+		./src/errors_two.c		\
+		./src/my_checker2.c		\
+		./src/connect.c			\
+		./src/find_path2.c		\
+		./src/find_path3.c		\
+		./src/find_path3_utils.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -29,7 +34,8 @@ CFLAGS	=	-W -Wall -Wextra -I./include -g3
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	gcc -o $(NAME) $(OBJ) ./libprintf.a
+	$(MAKE) -C ./lib_printf
+	gcc -o $(NAME) $(OBJ) ./lib_printf/libmy.a
 
 clean:
 	rm -f ./src/*.o

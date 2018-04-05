@@ -20,7 +20,7 @@ SRC	=	./src/my_printf.c		\
 		./src/flag2.c			\
 		./src/flag3.c			\
 		./src/check_flag_printf.c	\
-		./src/flag_big_s.c		
+		./src/flag_big_s.c
 
 OBJ	=	$(SRC:.c=.o)
 

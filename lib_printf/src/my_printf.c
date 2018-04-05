@@ -40,7 +40,7 @@ void	printf_condition(int *j, char *str, va_list ap, t_list *i)
 		(*j)++;
 	}
 	else if (check_flag_printf(str[*j]) == 84
-		   || str[*j] == '%')
+			|| str[*j] == '%')
 		my_putchar(str[*j], i);
 }
 

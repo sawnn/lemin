@@ -32,20 +32,21 @@ char	**my_reader(char **tab)
 
 char	**my_malloc_line(char **my_tab, char *str, char c)
 {
-	int	i = 0;
+	int	i = -1;
 	int	nb = 0;
 	int	a = 0;
-
-	while (str[i]) {
+	int	b = 0;
+	while (str[++i]) {
 		if (str[i] == c) {
-			if ((my_tab[nb] = malloc(sizeof(char) * a + 2)) == NULL)
-				return (NULL);
+			my_tab[nb] = malloc(sizeof(char) * a + 2);
+			!my_tab[nb] ? b = 1 : 0;
 			my_tab[nb][a] = 0;
 			a = 0;
 			nb += 1;
 		}
+		if (b == 1)
+			return (NULL);
 		a += 1;
-		i += 1;
 	}
 	if ((my_tab[nb] = malloc(sizeof(char) * a + 2)) == NULL)
 		return (NULL);

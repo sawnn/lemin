@@ -54,21 +54,31 @@ char	*check_line(char **tab)
 	return (tab[0]);
 }
 
+char	*check_room_2(char *str, room_s **tmp, int *i)
+{
+	char	*name = NULL;
+	char	*link = NULL;
+
+	if (count_space(str) == 1 && my_strncmp(str, "#", 1) == 1) {
+		name = get_room(str);
+		link = get_link(str);
+		if ((my_strcmp((*tmp)->name, name) == 1) ^ (
+				my_strcmp((*tmp)->name, link) == 1)) {
+			*tmp = (*tmp)->next;
+			*i = 1;
+		}
+	}
+	return (name);
+}
+
 char	*check_room_alone(char **tab, room_s *room)
 {
 	room_s	*tmp = room;
 	int	i = 1;
 	char	*name = NULL;
-	char	*link = NULL;
+
 	while (tmp->next && tab[++i]) {
-		if (count_space(tab[i]) == 1 && my_strncmp(tab[i], "#", 1) == 1) {
-			name = get_room(tab[i]);
-			link = get_link(tab[i]);
-			if ((my_strcmp(tmp->name, name) == 1) ^ (my_strcmp(tmp->name, link) == 1)) {
-				tmp = tmp->next;
-				i = 1;
-			}
-		}
+		name = check_room_2(tab[i], &tmp, &i);
 		if (!tab[i])
 			return (NULL);
 	}

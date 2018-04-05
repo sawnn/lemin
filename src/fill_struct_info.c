@@ -68,22 +68,14 @@ void	my_checker(first_end *first, char **tab)
 
 	init(first);
 	while ((checkcomment(tab, i)) == 1)
-		i++;
+		i += 1;
 	nb_ant = my_getnbr(tab[i]);
 	while (tab[++i]) {
-		while (my_strncmp(tab[i], "#", 1) == 0) {
-			my_strncmp(tab[i], "##start", 7) == 0 ?	a = 1 : 0;
-			my_strncmp(tab[i], "##end", 5) == 0 ? a = 2 : 0;
-			i += 1;
-			if (!tab[i])
-				return;
-		}
+		if (my_check_2(tab[i], &a, &i) == 84)
+			return;
 		if (count_space(tab[i]) == 3)
 			put_in_list(first, tab[i], &a, nb_ant);
-		else {
-			if (count_space(tab[i]) == 1 && check_nb(tab[i]) != NULL);
-			else
-				put_links_room(first, tab[i]);
-		}
+		else
+			my_check_3(tab[i], first);
 	}
 }
