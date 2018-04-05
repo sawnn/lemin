@@ -52,6 +52,8 @@ node_t	*my_graphdup(info_room *list)
 	tmp->ant = list->ant;
 	tmp->start = list->start;
 	tmp->end = list->end;
+	tmp->bool = 0;
+	tmp->link = NULL;
 	return (tmp);
 }
 

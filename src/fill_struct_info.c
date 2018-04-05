@@ -54,7 +54,6 @@ int	checkcomment(char **str, int j)
 		if (str[j][i] == '#' && i == 0)
 			return (1);
 		if (str[j][i] == '#' && i != 0) {
-			str[j][i] = '\0';
 			return (0);
 		}
 	}

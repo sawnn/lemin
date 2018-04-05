@@ -168,9 +168,9 @@ char	**find_path(node_t *start, node_t **all_node)
 		} else {
 			tmp = tmp->link->node;			
 			str = my_strcat(str, my_strcat(" ", tmp->name));
-		}	
+		}
 	}
-	write(1, "#moves\n", 7);
+        write(1, "#moves\n", 7);
 	get_moves(str, start->ant);
 	return (NULL);
 }
