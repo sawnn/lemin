@@ -27,7 +27,7 @@ node_t	**list_to_node(first_end *list)
 	info_room	*tmp = list->first;
 	int		i = -1;
 
-	if ((graph = malloc(sizeof(node_t *) * length_list(list) + 1)) == NULL)
+	if ((graph = malloc(sizeof(node_t *) * length_list(list) + 10)) == NULL)
 		return (NULL);
 	while (tmp) {
 		graph[++i] = my_graphdup(tmp);

@@ -64,7 +64,7 @@ char	*check_room_link(char **tab, room_s *room, int i)
 	room_s	*tmp = room;
 
 	while (tab[++i])
-		if (check_room_link2(tab[i], room, tmp) == NULL)
+		if (check_room_link2(tab[i], room, tmp) == 84)
 			return (NULL);
 	return (tab[0]);
 }

@@ -141,8 +141,8 @@ int	length_list(first_end *);
 /*MY_CHECKER2.C*/
 int	my_check_2(char *, int *, int *);
 int	my_check_3(char *, first_end *);
-void	*check_comment2(char *, int *, int *);
-void	*check_room_link2(char *, room_s *, room_s *);
+int	check_comment2(char *, int *, int *);
+int	check_room_link2(char *, room_s *, room_s *);
 
 /*CONNECT.C*/
 void	connect_nodes(node_t *, node_t *);

@@ -46,10 +46,11 @@ char	*get_room(char *str)
 	return (name);
 }
 
-int	checkcomment(char **str, int j)
+int	checkcomment(char **str, int j, first_end *first)
 {
 	int i = -1;
 
+	init(first);
 	while (str[j][++i]) {
 		if (str[j][i] == '#' && i == 0)
 			return (1);
@@ -62,16 +63,20 @@ int	checkcomment(char **str, int j)
 
 void	my_checker(first_end *first, char **tab)
 {
-	int	i = 0;
+	int	i = -1;
 	int	a = 0;
 	int	nb_ant = 0;
-
-	init(first);
-	while ((checkcomment(tab, i)) == 1)
-		i += 1;
+	int	b = 0;
+	while ((checkcomment(tab, ++i, first)) == 1);
 	nb_ant = my_getnbr(tab[i]);
 	while (tab[++i]) {
-		if (my_check_2(tab[i], &a, &i) == 84)
+		while (my_strncmp(tab[i], "#", 1) == 0) {
+			my_strncmp(tab[i], "##start", 7) == 0 ?	a = 1 : 0;
+			my_strncmp(tab[i], "##end", 5) == 0 ? a = 2 : 0;
+			i += 1;
+			!tab[i] ? b = 1 : 0;
+		}
+		if (b == 1)
 			return;
 		if (count_space(tab[i]) == 3)
 			put_in_list(first, tab[i], &a, nb_ant);

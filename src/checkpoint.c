@@ -47,7 +47,7 @@ char	**check_comment(char **tab)
 			&& my_strncmp(tab[i], "##", 2) == 1
 			? i += 1 : 0;
 		comment(tab[i], &s, &e, &a) == 1 ? i += 1 : 0;
-		if (check_comment2(tab[i], &a, &i) == NULL)
+		if (check_comment2(tab[i], &a, &i) == 84)
 			return (NULL);
 		if (!tab[i])
 			break;
@@ -84,7 +84,7 @@ char	**my_checkpoint(char **tab)
 	int	ret = 0;
 
 	if (check_line(tab) == NULL || check_ant(tab) == NULL
-		|| check_comment(tab) == NULL)
+	    || check_comment(tab) == NULL)
 		return (NULL);
 	while (tab[i]) {
 		if (count_space(tab[i]) == 3)
