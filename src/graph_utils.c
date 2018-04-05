@@ -33,7 +33,7 @@ node_t	**list_to_node(first_end *list)
 		graph[++i] = my_graphdup(tmp);
 		tmp = tmp->next;
 	}
-	graph[i] = NULL;
+	graph[i + 1] = NULL;
 	free(tmp);
 	return (graph);
 }

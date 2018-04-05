@@ -7,6 +7,18 @@
 
 #include "my.h"
 
+char	*is_comment(char *str)
+{
+	int i = -1;
+
+	while (str[++i])
+		if (str[i] == '#' && i != 0 && str[i - 1] != '#') {
+			str[i] = '\0';
+			return (str);
+		}
+	return (str);
+}
+
 void	print_tab_two(char **tab, int *i)
 {
 	while (tab[++*i]) {

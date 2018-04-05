@@ -91,6 +91,7 @@ int	main(UNU int ac, UNU char **av)
 	all_node = list_to_node(list);
 	start = build_my_graph(all_node, list);
 	print_tab(tab);
+	find_path(start, all_node);
 	free(list);
 	free(all_node);
 	free(tab);

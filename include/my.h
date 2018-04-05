@@ -49,6 +49,7 @@ typedef struct node {
 	int	ant;
 	char	start;
 	char	end;
+	int bool;
 	struct link	*link;
 } node_t;
 
@@ -65,6 +66,11 @@ typedef struct s_list {
 
 int	my_printf(char *, ...);
 char	*get_next_line(int);
+
+void    my_put_nbr(int);
+
+/*FIND_PATH.C*/
+char    **find_path(node_t *, node_t **);
 
 /* BASE */
 char	**my_reader(char **);
