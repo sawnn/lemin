@@ -20,6 +20,8 @@ char	*check_ant(char **ant)
 	while (ant[a][++i])
 		if (ant[a][i] < 48 || ant[a][i] > 57)
 			return (NULL);
+	if (my_getnbr(ant[a]) <= 0)
+		return (NULL);
 	return (ant[a]);
 }
 
