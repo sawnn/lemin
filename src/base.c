@@ -24,7 +24,6 @@ char	**my_reader(char **tab)
 	}
 	(tab = my_str_to_word_tab(dest, '\n')) == NULL ? returner = 84 : 0;
 	if (my_checkpoint(tab) == NULL || returner == 84) {
-		printf("%d\n", returner);
 		print_tab(tab);
 		return (NULL);
 	}
