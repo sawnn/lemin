@@ -30,7 +30,7 @@ int	is_start(first_end *list, char **tab)
 	info_room *tmp = list->first;
 
 	while (tmp) {
-		if (!tmp->links_room && tmp->start == 1) {
+		if (!tmp->links_room && (tmp->start == 1 || tmp->end == 1)) {
 			print_tab(tab);
 			return (84);
 		}
