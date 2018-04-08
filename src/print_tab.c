@@ -43,9 +43,9 @@ void	print_tab(char **tab)
 	while (tab[++i]) {
 		if (my_strncmp(tab[i], "##", 2) == 1 &&
 		my_strncmp(tab[i], "#", 1) == 0);
-		else if (my_strncmp(tab[i], "##", 2) == 0) {
+		else if (my_strncmp(tab[i], "##", 2) == 0)
 			my_printf("%s\n", tab[i]);
-		} else {
+		else {
 			write(1, tab[i], my_strlen(tab[i]));
 			break;
 		}

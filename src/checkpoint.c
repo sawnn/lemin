@@ -27,13 +27,14 @@ char	*check_ant(char **ant)
 
 int	comment(char *str, int *s, int *e, int *a)
 {
-	if (str)
+	if (str) {
 		if (my_strncmp(str, "##", 2) == 0) {
 			my_strncmp(str, "##start", 7) == 0 ? *s += 1 : 0;
 			my_strncmp(str, "##end", 5) == 0 ? *e += 1 : 0;
 			*a = 1;
 			return (1);
 		}
+	}
 	return (0);
 }
 
@@ -46,8 +47,7 @@ char	**check_comment(char **tab)
 
 	while (tab[++i]) {
 		my_strncmp(tab[i], "#", 1) == 0
-			&& my_strncmp(tab[i], "##", 2) == 1
-			? i += 1 : 0;
+			&& my_strncmp(tab[i], "##", 2) == 1 ? i += 1 : 0;
 		comment(tab[i], &s, &e, &a) == 1 ? i += 1 : 0;
 		if (check_comment2(tab[i], &a, &i) == 84)
 			return (NULL);

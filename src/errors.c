@@ -42,19 +42,21 @@ char	*check_line(char **tab)
 {
 	int	i = -1;
 	int	a = 0;
+	int	b = 0;
+	int	c = 0;
 
 	while (tab[++i]) {
 		while (my_strncmp(tab[i], "#", 1) == 0) {
-			if (tab[i + 1])
-				i += 1;
-			else
-				break;
+			tab[i + 1] ? i += 1 : (c = 1);
 		}
+		if (c == 1)
+			break;
 		if (count_space(tab[i]) == 2 || count_space(tab[i]) > 3)
 			return (NULL);
 		else if (count_space(tab[i]) == 1)
-			if (check_line_two(tab[i], a) == NULL)
-				return (NULL);
+			check_line_two(tab[i], a) == NULL ? b = 1 : 0;
+		if (b == 1)
+			return (NULL);
 		a = 0;
 	}
 	return (tab[0]);

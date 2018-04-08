@@ -64,11 +64,12 @@ char	**find_path(node_t *start, node_t **all_node)
 	while (tmp->link->node && tmp->end == 0) {
 		tmp->bool = 1;
 		while (tmp->link->next != NULL && tmp->link->node->bool == 1)
-			tmp->link = tmp->link->next;		
+			tmp->link = tmp->link->next;
 		if ((tmp->link->next == NULL && tmp->link->node->bool == 1)) {
 			tmp = find_maillon(all_node, str);
 			str = delete_name(str);
-		} else {
+		}
+		else {
 			tmp = tmp->link->node;
 			str = my_strcat(str, my_strcat(" ", tmp->name));
 		}

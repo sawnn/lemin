@@ -51,8 +51,7 @@ char	*check_link_same(char **tab)
 		while (tab[i][++b])
 			tab[i][b] == '-' ? p = 1 : 0;
 		if (count_space(tab[i]) == 1
-			&& my_strncmp(tab[i], "#", 1) == 1
-			&& p == 1) {
+			&& my_strncmp(tab[i], "#", 1) == 1 && p == 1) {
 			name = get_room(tab[i]);
 			link = get_link(tab[i]);
 			p = 2;
