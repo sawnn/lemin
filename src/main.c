@@ -25,16 +25,16 @@ node_t	*build_my_graph(node_t **all_node, first_end *list)
 	return (NULL);
 }
 
-int	is_start(first_end *list, char **tab)
+int	is_start(node_t **node, char **tab)
 {
-	info_room *tmp = list->first;
+	int	i = -1;
 
-	while (tmp) {
-		if (!tmp->links_room && (tmp->start == 1 || tmp->end == 1)) {
+	while (node[++i]) {
+		if ((node[i]->start == 1 ||
+			node[i]->end == 1) && !node[i]->link) {
 			print_tab(tab);
 			return (84);
 		}
-		tmp = tmp->next;
 	}
 	return (0);
 }
@@ -50,10 +50,10 @@ int	main(UNU int ac, UNU char **av)
 	if ((tab = my_reader(tab)) == NULL)
 		return (84);
 	my_checker(list, tab);
-	if (is_start(list, tab) == 84)
-		return (84);
 	all_node = list_to_node(list);
 	start = build_my_graph(all_node, list);
+	if (is_start(all_node, tab) == 84)
+		return (84);
 	print_tab(tab);
 	if (find_path(start, all_node) == NULL)
 		return (84);
