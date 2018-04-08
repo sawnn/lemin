@@ -25,19 +25,20 @@ node_t	*build_my_graph(node_t **all_node, first_end *list)
 	return (NULL);
 }
 
-int	is_start(node_t **node, char **tab)
+int     is_start(node_t **node, char **tab)
 {
-	int	i = -1;
+	int     i = -1;
 
 	while (node[++i]) {
-		if ((node[i]->start == 1 ||
-			node[i]->end == 1) && !node[i]->link) {
-			print_tab(tab);
-			return (84);
-		}
+                if ((node[i]->start == 1 ||
+                        node[i]->end == 1) && !node[i]->link) {
+                        print_tab(tab);
+                        return (84);
+                }
 	}
-	return (0);
+        return (0);
 }
+
 
 int	main(UNU int ac, UNU char **av)
 {
@@ -45,6 +46,7 @@ int	main(UNU int ac, UNU char **av)
 	char		**tab = NULL;
 	node_t		**all_node = NULL;
 	node_t		*start = NULL;
+
 	if ((list = malloc(sizeof(first_end))) == NULL)
 		return (84);
 	if ((tab = my_reader(tab)) == NULL)
@@ -55,8 +57,7 @@ int	main(UNU int ac, UNU char **av)
 	if (is_start(all_node, tab) == 84)
 		return (84);
 	print_tab(tab);
-	if (find_path(start, all_node) == NULL)
-		return (84);
+	find_path(start, all_node);
 	free(list);
 	free(all_node);
 	free(tab);

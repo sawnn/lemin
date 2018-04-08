@@ -13,11 +13,9 @@ char	*find_name(char *str)
 	int j = -1;
 	char *tmp = malloc(sizeof(char) * i);
 
-	if (!tmp)
-		return (NULL);
-	while (i >= 0 && str[i] != 0 && str[--i] && str[i] != ' ');
-	while (i >= 0 && str[i] != 0 && str[--i] && str[i] != ' ');
-	while (i >= 0 && str[i] != 0 && str[++i] && str[i] != ' ')
+	while (str[--i] && str[i] != ' ');
+	while (str[--i] && str[i] != ' ');
+	while (str[++i] && str[i] != ' ')
 		tmp[++j] = str[i];
 	tmp[++j] = 0;
 	return (tmp);

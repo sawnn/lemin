@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-char	**moves(char **tmp, int **ant, int nbr_ant, int nbr)
+void	moves(char **tmp, int **ant, int nbr_ant, int nbr)
 {
 	int i = -1;
 	int j = -1;
@@ -18,10 +18,9 @@ char	**moves(char **tmp, int **ant, int nbr_ant, int nbr)
 			moves_2(i, ant, tmp, nbr, nbr_ant, &j);
 		write(1, "\n", 1);
 	}
-	return (tmp);
 }
 
-char	**get_moves(char *str, int ant)
+void	get_moves(char *str, int ant)
 {
 	char **tmp = malloc(sizeof(char *) * my_strlen(str));
 	int i = -1;
@@ -42,16 +41,14 @@ char	**get_moves(char *str, int ant)
 		is_ant[j] = malloc(sizeof(int));
 		is_ant[j][0] = 0;
 	}
-	return (moves(tmp, is_ant, ant, j));
+	moves(tmp, is_ant, ant, j);
 }
 
 char	*delete_name(char *str)
 {
 	int i = my_strlen(str);
 
-	while (i >= 0 && str[--i] != ' ');
-	if (str[i] != ' ')
-		return (NULL);
+	while (str[--i] != ' ');
 	str[i] = 0;
 	return (str);
 }
@@ -65,17 +62,15 @@ char	**find_path(node_t *start, node_t **all_node)
 		tmp->bool = 1;
 		while (tmp->link->next != NULL && tmp->link->node->bool == 1)
 			tmp->link = tmp->link->next;
-		if ((tmp->link->next == NULL && tmp->link->node->bool == 1)) {
+		if (tmp->link->next == NULL && tmp->link->node->bool == 1) {
 			tmp = find_maillon(all_node, str);
 			str = delete_name(str);
-		}
-		else {
+		} else {
 			tmp = tmp->link->node;
 			str = my_strcat(str, my_strcat(" ", tmp->name));
 		}
-		if (str == NULL)
-			return (NULL);
 	}
 	write(1, "#moves\n", 7);
-	return (get_moves(str, start->ant));
+	get_moves(str, start->ant);
+	return (NULL);
 }

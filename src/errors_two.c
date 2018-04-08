@@ -41,24 +41,24 @@ room_s	*put_list_room(room_s **room, char *tab)
 
 char	*check_link_same(char **tab)
 {
-	int	i = -1;
+	int	i = 0;
 	char	*name = NULL;
 	char	*link = NULL;
-	int	b = -1;
+	int	b = 0;
 	int	p = 0;
 
 	while (tab[++i]) {
 		while (tab[i][++b])
 			tab[i][b] == '-' ? p = 1 : 0;
 		if (count_space(tab[i]) == 1
-			&& my_strncmp(tab[i], "#", 1) == 1 && p == 1) {
+			&& my_strncmp(tab[i], "#", 1) == 1
+			&& p == 1) {
 			name = get_room(tab[i]);
 			link = get_link(tab[i]);
 			p = 2;
 		}
 		if (p == 2 && (name[0] == 0 || link[0] == 0))
 			return (NULL);
-		b = -1;
 	}
 	return (tab[0]);
 }

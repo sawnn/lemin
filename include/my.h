@@ -156,8 +156,8 @@ int	check_first(int *, int);
 void	check_space(int **, int, int);
 
 /*FIND_PATH3.C*/
-char	**moves(char **, int **, int, int);
-char	**get_moves(char *, int);
+void	moves(char **, int **, int, int);
+void	get_moves(char *, int);
 char	*delete_name(char *);
 char	**find_path(node_t *, node_t **);
 
