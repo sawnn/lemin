@@ -42,4 +42,3 @@ void	check_space(int **ant, int i, int nbr_ant)
 	if (i == 1 && check_first(ant[0], nbr_ant) == 1)
 		write(1, " ", 1);
 }
-

@@ -69,15 +69,15 @@ char	*check_coordonne(char **tab, room_s *room, char *x, char *y)
 	int	i = -1;
 	int	ret = 0;
 	room_s	*tmp = room;
-
 	while (tab[++i]) {
 		if (count_space(tab[i]) == 3) {
 			y = word_nbr_nb(tab[i], 3);
 			x = word_nbr_nb(tab[i], 2);
 		}
 		while (y && x && tmp->next) {
-			(my_strcmp(tmp->x, x) == 1 && my_strcmp(tmp->y, y) == 1) ? ret += 1 : 0;
-			 tmp = tmp->next;
+			(my_strcmp(tmp->x, x) == 1
+			&& my_strcmp(tmp->y, y) == 1) ? ret += 1 : 0;
+			tmp = tmp->next;
 		}
 		if (ret > 1)
 			return (NULL);
