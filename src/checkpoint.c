@@ -48,11 +48,11 @@ char	**check_comment(char **tab)
 	while (tab[++i]) {
 		my_strncmp(tab[i], "#", 1) == 0
 			&& my_strncmp(tab[i], "##", 2) == 1 ? i += 1 : 0;
+		if (!tab[i])
+			break;
 		comment(tab[i], &s, &e, &a) == 1 ? i += 1 : 0;
 		if (check_comment2(tab[i], &a, &i) == 84)
 			return (NULL);
-		if (!tab[i])
-			break;
 	}
 	if (s != 1 || e != 1)
 		return (NULL);

@@ -46,10 +46,9 @@ char	*check_line(char **tab)
 	int	c = 0;
 
 	while (tab[++i]) {
-		while (my_strncmp(tab[i], "#", 1) == 0) {
+		while (tab[i + 1] && my_strncmp(tab[i], "#", 1) == 0)
 			tab[i + 1] ? i += 1 : (c = 1);
-		}
-		if (c == 1)
+		if (!tab[i] || c == 1)
 			break;
 		if (count_space(tab[i]) == 2 || count_space(tab[i]) > 3)
 			return (NULL);
