@@ -48,7 +48,7 @@ char	*check_line(char **tab)
 	while (tab[++i]) {
 		while (tab[i + 1] && my_strncmp(tab[i], "#", 1) == 0)
 			tab[i + 1] ? i += 1 : (c = 1);
-		if (!tab[i] || c == 1)
+		if (!tab[i] || c == 1 || my_strncmp(tab[i + 1], "#", 1) == 0)
 			break;
 		if (count_space(tab[i]) == 2 || count_space(tab[i]) > 3)
 			return (NULL);
@@ -59,35 +59,4 @@ char	*check_line(char **tab)
 		a = 0;
 	}
 	return (tab[0]);
-}
-
-char	*check_room_2(char *str, room_s **tmp, int *i)
-{
-	char	*name = NULL;
-	char	*link = NULL;
-
-	if (count_space(str) == 1 && my_strncmp(str, "#", 1) == 1) {
-		name = get_room(str);
-		link = get_link(str);
-		if ((my_strcmp((*tmp)->name, name) == 1) ^ (
-				my_strcmp((*tmp)->name, link) == 1)) {
-			*tmp = (*tmp)->next;
-			*i = 1;
-		}
-	}
-	return (name);
-}
-
-char	*check_room_alone(char **tab, room_s *room)
-{
-	room_s	*tmp = room;
-	int	i = 1;
-	char	*name = NULL;
-
-	while (tmp->next && tab[++i]) {
-		name = check_room_2(tab[i], &tmp, &i);
-		if (!tab[i])
-			return (NULL);
-	}
-	return (name);
 }

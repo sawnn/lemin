@@ -75,8 +75,7 @@ char	**check_two(char **tab, int ret)
 	check_room_link(tab, room, i) == NULL ? ret = 84 : 0;
 	check_link_same(tab) == NULL ? ret = 84 : 0;
 	check_room_name(room) == NULL ? ret = 84 : 0;
-	check_room_alone(tab, room) == NULL ? ret = 84 : 0;
-	if (ret == 84)
+        if (ret == 84)
 		return (NULL);
 	return (tab);
 }
