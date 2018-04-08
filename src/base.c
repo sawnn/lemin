@@ -12,18 +12,18 @@ char	**my_reader(char **tab)
 	char	*str = NULL;
 	char	*dest = NULL;
 	char	*tmp = NULL;
-	int	returner = 0;
+	int	returne = 0;
 
 	if ((str = get_next_line(0)) == NULL)
 		return (NULL);
 	while (str) {
 		if ((tmp = get_next_line(0)) != NULL)
-			(str = my_strcat(str, "\n")) == NULL ? returner = 84 : 0;
-		(dest = my_strcat(dest, str)) == NULL ? returner = 84 : 0;
+			(str = my_strcat(str, "\n")) == NULL ? returne = 84 : 0;
+		(dest = my_strcat(dest, str)) == NULL ? returne = 84 : 0;
 		str = tmp;
 	}
-	(tab = my_str_to_word_tab(dest, '\n')) == NULL ? returner = 84 : 0;
-	if (my_checkpoint(tab) == NULL || returner == 84) {
+	(tab = my_str_to_word_tab(dest, '\n')) == NULL ? returne = 84 : 0;
+	if (my_checkpoint(tab) == NULL || returne == 84) {
 		print_tab(tab);
 		return (NULL);
 	}

@@ -28,8 +28,6 @@ void	put_in_list(first_end *lc, char *str, int *i, int ant)
 {
 	info_room	*room = malloc(sizeof(info_room));
 
-	if (!room)
-		exit(EXIT_FAILURE);
 	init_list(room, str);
 	*i == 1 ? room->start = 1 : 0;
 	*i == 2 ? room->end = 1 : 0;
