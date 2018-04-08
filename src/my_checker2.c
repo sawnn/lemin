@@ -10,13 +10,12 @@
 int	my_check_2(char *str, int *a, int *i)
 {
 	while (my_strncmp(str, "#", 1) == 0) {
-		printf("ici %s\n", str);
 		my_strncmp(str, "##start", 7) == 0 ? *a = 1 : 0;
 		my_strncmp(str, "##end", 5) == 0 ? *a = 2 : 0;
 		*i += 1;
 		if (!str)
 			return (84);
-        }
+	}
 	return (0);
 }
 

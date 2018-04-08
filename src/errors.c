@@ -39,16 +39,14 @@ char	*check_line(char **tab)
 
 	while (tab[++i]) {
 		while (my_strncmp(tab[i], "#", 1) == 0) {
-			if (tab[i + 1])
-				i += 1;
-			else
+			i = tab[i + 1] ? i + 1 : i;
+			if (!tab[i + 1])
 				break;
 		}
 		if (count_space(tab[i]) == 2 || count_space(tab[i]) > 3)
 			return (NULL);
-		else if (count_space(tab[i]) == 1)
-			if (check_line_two(tab[i], a) == NULL)
-				return (NULL);
+		else if (count_space(tab[i]) == 1 && !check_line_two(tab[i], a))
+			return (NULL);
 		a = 0;
 	}
 	return (tab[0]);

@@ -25,18 +25,18 @@ node_t	*build_my_graph(node_t **all_node, first_end *list)
 	return (NULL);
 }
 
-int     is_start(node_t **node, char **tab)
+int	is_start(node_t **node, char **tab)
 {
-	int     i = -1;
+	int	i = -1;
 
 	while (node[++i]) {
-                if ((node[i]->start == 1 ||
-                        node[i]->end == 1) && !node[i]->link) {
-                        print_tab(tab);
-                        return (84);
-                }
+		if ((node[i]->start == 1 ||
+			node[i]->end == 1) && !node[i]->link) {
+			print_tab(tab);
+			return (84);
+		}
 	}
-        return (0);
+	return (0);
 }
 
 
