@@ -41,10 +41,10 @@ room_s	*put_list_room(room_s **room, char *tab)
 
 char	*check_link_same(char **tab)
 {
-	int	i = 0;
+	int	i = -1;
 	char	*name = NULL;
 	char	*link = NULL;
-	int	b = 0;
+	int	b = -1;
 	int	p = 0;
 
 	while (tab[++i]) {
@@ -59,6 +59,7 @@ char	*check_link_same(char **tab)
 		}
 		if (p == 2 && (name[0] == 0 || link[0] == 0))
 			return (NULL);
+		b = -1;
 	}
 	return (tab[0]);
 }

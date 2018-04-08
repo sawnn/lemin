@@ -87,7 +87,7 @@ char	**my_checkpoint(char **tab)
 	int	ret = 0;
 
 	if (check_line(tab) == NULL || check_ant(tab) == NULL
-	    || check_comment(tab) == NULL)
+		|| check_comment(tab) == NULL)
 		return (NULL);
 	while (tab[i]) {
 		if (count_space(tab[i]) == 3)

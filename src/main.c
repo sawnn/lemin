@@ -25,22 +25,38 @@ node_t	*build_my_graph(node_t **all_node, first_end *list)
 	return (NULL);
 }
 
+int	is_start(first_end *list, char **tab)
+{
+	info_room *tmp = list->first;
+
+	while (tmp) {
+		if (!tmp->links_room && tmp->start == 1) {
+			print_tab(tab);
+			return (84);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int	main(UNU int ac, UNU char **av)
 {
 	first_end	*list = NULL;
 	char		**tab = NULL;
 	node_t		**all_node = NULL;
 	node_t		*start = NULL;
-
 	if ((list = malloc(sizeof(first_end))) == NULL)
 		return (84);
 	if ((tab = my_reader(tab)) == NULL)
 		return (84);
 	my_checker(list, tab);
+	if (is_start(list, tab) == 84)
+		return (84);
 	all_node = list_to_node(list);
 	start = build_my_graph(all_node, list);
 	print_tab(tab);
-	find_path(start, all_node);
+	if (find_path(start, all_node) == NULL)
+		return (84);
 	free(list);
 	free(all_node);
 	free(tab);

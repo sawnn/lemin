@@ -19,9 +19,15 @@ char	*check_nb(char *tab)
 
 char	*check_line_two(char *tab, int a)
 {
+	char	*str = tab;
+	static	int	b = 0;
+
 	while (tab[a]) {
-		if (check_nb(tab) != NULL)
-			return (tab);
+		if (check_nb(tab) != NULL) {
+			b += 1;
+			b > 1 ? str = NULL : 0;
+			return (str);
+		}
 		else if (tab[a] == '-' && tab[a + 1] != 0 && a != 0)
 			break;
 		else if (tab[a + 1] == 0 && tab[a] != '-')
