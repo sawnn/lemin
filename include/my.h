@@ -38,6 +38,8 @@ typedef	struct	first_end_s {
 typedef struct	room_s {
 	struct	room_s *next;
 	char	*name;
+	char	*x;
+	char	*y;
 }	room_s;
 
 typedef	first_end_t first_end;
@@ -85,7 +87,7 @@ char	**my_malloc_tab(char **, char *, char c);
 
 /* CHECKPOINT.C */
 char	**my_checkpoint(char **);
-char	**check_two(char **, int);
+char	**check_two(char **, int, char *, char *);
 char	**check_comment(char **);
 int	comment(char *, int *, int *, int *);
 char	*check_ant(char **);
@@ -143,6 +145,7 @@ int	my_check_2(char *, int *, int *);
 int	my_check_3(char *, first_end *);
 int	check_comment2(char *, int *, int *);
 int	check_room_link2(char *, room_s *, room_s *);
+char	*check_coordonne(char **, room_s *, char *, char *);
 
 /*CONNECT.C*/
 void	connect_nodes(node_t *, node_t *);

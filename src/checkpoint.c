@@ -59,7 +59,7 @@ char	**check_comment(char **tab)
 	return (tab);
 }
 
-char	**check_two(char **tab, int ret)
+char	**check_two(char **tab, int ret, char *y, char *x)
 {
 	int	i = -1;
 	room_s	*room = NULL;
@@ -76,6 +76,7 @@ char	**check_two(char **tab, int ret)
 	check_link_same(tab) == NULL ? ret = 84 : 0;
 	check_room_name(room) == NULL ? ret = 84 : 0;
 	check_room_alone(tab, room) == NULL ? ret = 84 : 0;
+	check_coordonne(tab, room, x, y) == NULL ? ret = 84 : 0;
 	if (ret == 84)
 		return (NULL);
 	return (tab);
@@ -85,6 +86,8 @@ char	**my_checkpoint(char **tab)
 {
 	int	i = 1;
 	int	ret = 0;
+	char	*x = NULL;
+	char	*y = NULL;
 
 	if (check_line(tab) == NULL || check_ant(tab) == NULL
 	    || check_comment(tab) == NULL)
@@ -94,5 +97,5 @@ char	**my_checkpoint(char **tab)
 			check_room(tab[i]) == NULL ? ret = 84 : 0;
 		i += 1;
 	}
-	return (check_two(tab, ret));
+	return (check_two(tab, ret, y, x));
 }

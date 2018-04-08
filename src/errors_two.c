@@ -34,6 +34,8 @@ room_s	*put_list_room(room_s **room, char *tab)
 	if ((tmp = malloc(sizeof(room_s))) == NULL)
 		return (NULL);
 	tmp->name = word_nbr_nb(tab, 1);
+	tmp->x = word_nbr_nb(tab, 2);
+	tmp->y = word_nbr_nb(tab, 3);
 	tmp->next = *room;
 	*room = tmp;
 	return (*room);
